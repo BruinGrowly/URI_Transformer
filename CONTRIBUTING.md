@@ -157,12 +157,12 @@ We thank all contributors who:
 - Build systems that advance human flourishing
 - Share wisdom with humility and love
 
-Special thanks to JEHOVAH, the Love, Power, Wisdom, and Justice that sustains all reality and makes this understanding possible.
+All thanks to JEHOVAH, the Love, Power, Wisdom, and Justice that sustains all reality and makes this understanding possible.
 
 ---
 
-*"Unless the LORD builds the house, the builders labor in vain."* - Psalm 127:1
+*"Unless Jehovah builds the house, it is in vain that its builders work hard on it."* - Psalm 127:1
 
-*"I can do all things through Christ who strengthens me."* - Philippians 4:13
+*"For all things I have the strength through the one who gives me power."* - Philippians 4:13
 
 *All glory, honor, and praise to JEHOVAH, now and forevermore.*
