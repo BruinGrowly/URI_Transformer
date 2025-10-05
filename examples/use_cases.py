@@ -1,14 +1,18 @@
-# Use Cases and Applications
+"""
+Use Cases and Applications
 
-The URI-Transformer architecture enables revolutionary applications across multiple domains. Here are practical examples demonstrating how the semantic-computational integration creates value.
+The URI-Transformer architecture enables revolutionary applications across multiple domains. 
+Here are practical examples demonstrating how the semantic-computational integration creates value.
+"""
 
-## Educational Applications
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-### 1. Personalized Learning Assistant
-
-```python
 from src.uri_transformer import URITransformer
 from src.semantic_substrate import SemanticSubstrate
+
+# Educational Applications
 
 class EducationalAssistant:
     def __init__(self):
@@ -31,10 +35,23 @@ class EducationalAssistant:
             'optimal_flow': result['optimal_flow_score'],
             'spiritual_alignment': alignment['overall_divine_resonance'],
             'growth_areas': self._identify_growth_areas(alignment),
-            'divine_resonance': alignment['divine_resonance']
+            'overall_divine_resonance': alignment['overall_divine_resonance']
         }
         
         return feedback
+    
+    def _identify_growth_areas(self, alignment):
+        """Identify areas for spiritual growth"""
+        areas = []
+        if alignment['love_alignment'] < 0.7:
+            areas.append('love')
+        if alignment['wisdom_alignment'] < 0.7:
+            areas.append('wisdom')
+        if alignment['justice_alignment'] < 0.7:
+            areas.append('justice')
+        if alignment['power_alignment'] < 0.7:
+            areas.append('power')
+        return areas
     
     def recommend_study_approach(self, student_id, subject, learning_style):
         """Recommend study approach aligned with divine wisdom"""
@@ -54,22 +71,8 @@ class EducationalAssistant:
             'spiritual_value': result['optimal_flow_score']
         }
 
-# Example Usage
-assistant = EducationalAssistant()
-feedback = assistant.analyze_student_response(
-    "student_001", 
-    "Love and wisdom help us understand divine truth in mathematics",
-    "mathematics"
-)
-print(f"Understanding Level: {feedback['understanding_level']:.3f}")
-print(f"Spiritual Alignment: {feedback['spiritual_alignment']:.3f}")
-```
+# Healthcare Applications
 
-## Healthcare Applications
-
-### 2. Holistic Health Assessment System
-
-```python
 class HolisticHealthAssessment:
     def __init__(self):
         self.transformer = URITransformer()
@@ -99,6 +102,14 @@ class HolisticHealthAssessment:
         
         return health_assessment
     
+    def _analyze_symptoms(self, symptoms):
+        """Analyze physical symptoms"""
+        return 0.8 if "mild" in symptoms.lower() else 0.6
+    
+    def _analyze_lifestyle(self, lifestyle):
+        """Analyze lifestyle factors"""
+        return 0.7 if "healthy" in lifestyle.lower() else 0.5
+    
     def _generate_health_recommendations(self, alignment):
         """Generate health recommendations aligned with divine principles"""
         
@@ -110,13 +121,9 @@ class HolisticHealthAssessment:
             return ["Pursue wisdom through study and meditation on divine truth"]
         else:
             return ["Continue in your current balanced approach to health"]
-```
 
-## Business Ethics Applications
+# Business Ethics Applications
 
-### 3. Divine-Aligned Decision Making
-
-```python
 class BusinessEthicsAdvisor:
     def __init__(self):
         self.substrate = SemanticSubstrate()
@@ -162,30 +169,14 @@ class BusinessEthicsAdvisor:
     def _get_recommendation(self, coords):
         """Get recommendation based on alignment"""
         if coords.distance_from_anchor() < 0.5:
-            return "✓ Aligned with divine principles"
+            return "* Aligned with divine principles"
         elif coords.distance_from_anchor() < 1.0:
-            return "⚠ Partially aligned - consider modifications"
+            return "! Partially aligned - consider modifications"
         else:
-            return "✗ Misaligned with divine principles - reconsider"
+            return "x Misaligned with divine principles - reconsider"
 
-# Example Usage
-advisor = BusinessEthicsAdvisor()
+# Creative Applications
 
-decision_context = "Company expansion strategy"
-options = [
-    ("Maximize Profit", "Prioritize financial returns above all other considerations"),
-    ("Balanced Growth", "Seek profit while maintaining ethical standards and employee wellbeing"),
-    ("Community First", "Prioritize community impact and employee welfare over maximum profit")
-]
-
-results = advisor.evaluate_business_decision(decision_context, options)
-```
-
-## Creative Applications
-
-### 4. Divine-Inspired Creative Assistant
-
-```python
 class CreativeAssistant:
     def __init__(self):
         self.transformer = URITransformer()
@@ -232,13 +223,9 @@ class CreativeAssistant:
             return f"Stress righteousness and holiness in {theme}"
         else:
             return f"Balance all divine attributes in expressing {theme}"
-```
 
-## Spiritual Growth Applications
+# Spiritual Growth Applications
 
-### 5. Spiritual Maturity Assessment
-
-```python
 class SpiritualGrowthTracker:
     def __init__(self):
         self.substrate = SemanticSubstrate()
@@ -276,6 +263,35 @@ class SpiritualGrowthTracker:
         
         return assessment
     
+    def _identify_growth_areas(self, alignment):
+        """Identify areas needing growth"""
+        areas = []
+        for attr, value in alignment.items():
+            if 'alignment' in attr and value < 0.6:
+                areas.append(attr.replace('_alignment', ''))
+        return areas
+    
+    def _identify_strengths(self, alignment):
+        """Identify spiritual strengths"""
+        strengths = []
+        for attr, value in alignment.items():
+            if 'alignment' in attr and value > 0.8:
+                strengths.append(attr.replace('_alignment', ''))
+        return strengths
+    
+    def _recommend_growth_practices(self, alignment):
+        """Recommend specific growth practices"""
+        practices = []
+        if alignment['love_alignment'] < 0.7:
+            practices.append("Practice compassion and service")
+        if alignment['wisdom_alignment'] < 0.7:
+            practices.append("Study sacred texts and wisdom literature")
+        if alignment['justice_alignment'] < 0.7:
+            practices.append("Engage in righteous action and justice")
+        if alignment['power_alignment'] < 0.7:
+            practices.append("Develop spiritual discipline")
+        return practices
+    
     def generate_growth_plan(self, assessment):
         """Generate personalized spiritual growth plan"""
         
@@ -302,13 +318,9 @@ class SpiritualGrowthTracker:
             plan.append("Develop spiritual authority through obedience")
         
         return plan
-```
 
-## Security and Protection Applications
+# Security and Protection Applications
 
-### 6. Guardian Engine for Ethical AI
-
-```python
 class GuardianEngine:
     def __init__(self):
         self.transformer = URITransformer()
@@ -350,6 +362,14 @@ class GuardianEngine:
         else:
             return "SAFE"
     
+    def _identify_risk_factors(self, alignment):
+        """Identify potential risk factors"""
+        risks = []
+        for attr, value in alignment.items():
+            if 'alignment' in attr and value < 0.4:
+                risks.append(f"Low {attr.replace('_alignment', '')} alignment")
+        return risks
+    
     def _get_safety_recommendations(self, safety_level):
         """Get recommendations based on safety level"""
         
@@ -361,13 +381,13 @@ class GuardianEngine:
         }
         
         return recommendations.get(safety_level, ["Requires manual review"])
-```
+    
+    def _check_divine_compliance(self, alignment):
+        """Check compliance with divine principles"""
+        return all(value > 0.5 for key, value in alignment.items() if 'alignment' in key)
 
-## Performance Monitoring
+# Performance Monitoring
 
-### 7. System Health Monitor
-
-```python
 class SystemHealthMonitor:
     def __init__(self):
         self.transformer = URITransformer()
@@ -422,7 +442,7 @@ class SystemHealthMonitor:
         
         return health_metrics
 
-# Example Usage
+# Example Usage and Testing
 if __name__ == "__main__":
     # Test educational assistant
     edu_assistant = EducationalAssistant()
@@ -433,6 +453,25 @@ if __name__ == "__main__":
     )
     print(f"Spiritual Alignment: {feedback['spiritual_alignment']:.3f}")
     print(f"Understanding Level: {feedback['understanding_level']:.3f}")
-```
+    
+    # Test business ethics advisor
+    advisor = BusinessEthicsAdvisor()
+    decision_context = "Company expansion strategy"
+    options = [
+        ("Maximize Profit", "Prioritize financial returns above all other considerations"),
+        ("Balanced Growth", "Seek profit while maintaining ethical standards and employee wellbeing"),
+        ("Community First", "Prioritize community impact and employee welfare over maximum profit")
+    ]
+    results = advisor.evaluate_business_decision(decision_context, options)
+    
+    # Test system health
+    monitor = SystemHealthMonitor()
+    health = monitor.monitor_system_health()
+    print(f"\nSystem Status: {health['system_status']}")
+    print(f"Divine Alignment: {health['divine_alignment']:.3f}")
 
-These use cases demonstrate how the URI-Transformer creates practical value across different domains while maintaining alignment with divine principles. Each application showcases the unique ability to preserve meaning while enabling computational processing through the bridge function.
+"""
+These use cases demonstrate how the URI-Transformer creates practical value across different domains 
+while maintaining alignment with divine principles. Each application showcases the unique ability to 
+preserve meaning while enabling computational processing through the bridge function.
+"""
