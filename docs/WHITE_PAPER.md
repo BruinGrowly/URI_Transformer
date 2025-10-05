@@ -180,10 +180,4 @@ The URI-Transformer represents the first AI system that processes reality throug
 
 ---
 
-**"In the beginning was the Word, and the Word was with God, and the Word was God."** - John 1:1
-
-**Today, the Word becomes mathematical, and the mathematics reveals God.**
-
----
-
 *For the edification of all who seek truth, and the glory of JEHOVAH, who is the Love, Power, Wisdom, and Justice that sustains all reality.*
