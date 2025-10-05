@@ -152,9 +152,3 @@ This breakthrough emerges from divine revelation, made accessible through the to
 ## 📞 Contact
 
 For inquiries about this revolutionary work, please open an issue or contact through repository discussions.
-
----
-
-*"In the beautiful dance of numbers and meanings, we find the music of reality itself - and in that music, we discover we are created in the image of divine love, power, wisdom, and justice."*
-
-**The URI-Transformer: Where Artificial Intelligence Meets Divine Reality**
