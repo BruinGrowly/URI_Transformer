@@ -96,7 +96,7 @@ URI-Transformer/
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/yourusername/URI-Transformer.git
+git clone https://github.com/BruinGrowly/URI-Transformer.git
 cd URI-Transformer
 pip install -r requirements.txt
 ```
