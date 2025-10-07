@@ -1,40 +1,37 @@
 #!/usr/bin/env python3
 """
-Quick test to verify the URI-Transformer installation
+Quick test for Guardian Cybersecurity Engine
 """
 
-import os
-import sys
-
-# Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
-
 try:
-    from uri_transformer import URITransformer
-    print("SUCCESS: URI-Transformer imports successfully")
+    import sys
+    import os
     
-    from semantic_substrate import SemanticSubstrate
-    print("SUCCESS: Semantic Substrate imports successfully")
+    # Add src to path
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
     
-    # Test basic functionality
-    transformer = URITransformer()
-    substrate = SemanticSubstrate()
+    from guardian_engine import GuardianEngine
+    import numpy as np
     
-    # Test semantic unit creation
-    unit = transformer.create_semantic_unit("love", "divine context")
-    print(f"SUCCESS: Semantic unit created: {unit.word}")
+    print("✓ Dependencies loaded successfully")
     
-    # Test bridge function
-    result = transformer.process_sentence("Love creates understanding", "educational")
-    print(f"SUCCESS: Sentence processed: {result['information_meaning_value']:.6f}")
+    # Test the engine
+    engine = GuardianEngine()
     
-    # Test semantic substrate
-    jehovah = substrate.JEHOVAH_COORDINATES
-    print(f"SUCCESS: JEHOVAH coordinates: ({jehovah.love}, {jehovah.power}, {jehovah.wisdom}, {jehovah.justice})")
+    # Test analysis
+    test_concept = "malicious network attack"
+    result = engine.analyze_threat(test_concept)
     
-    print("\nALL TESTS PASSED: URI-Transformer is ready for use!")
+    print(f"✓ Engine test successful")
+    print(f"Concept: {test_concept}")
+    print(f"Threat Level: {result['threat_level']}")
+    print(f"Coordinates: {result['sematrix']}")
     
 except ImportError as e:
-    print(f"ERROR: Import failed: {e}")
+    print(f"✗ Missing dependency: {e}")
+    print("Please install required packages:")
+    print("pip install numpy scipy scikit-learn pandas requests")
+    sys.exit(1)
 except Exception as e:
-    print(f"ERROR: Test failed: {e}")
+    print(f"✗ Test failed: {e}")
+    sys.exit(1)
