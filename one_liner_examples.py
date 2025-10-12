@@ -160,7 +160,7 @@ def text_summary(text):
 if __name__ == "__main__":
     test_text = "Help others with kindness and wisdom"
     
-    print("🌟 One-Liner Examples Demo")
+    print("STAR One-Liner Examples Demo")
     print(f"Text: '{test_text}'")
     print("-" * 40)
     
@@ -186,7 +186,7 @@ if __name__ == "__main__":
     texts = ["Be kind", "Stay strong", "Learn daily", "Act justly"]
     print(f"\nBatch results:")
     for t in texts:
-        print(f"'{t}' → {simple_classify(t)}")
+        print(f"'{t}' -> {simple_classify(t)}")
     
     print(f"\nSafe texts only: {filter_safe_texts(texts)}")
     print(f"Sorted by LOVE: {sort_by_love(texts)}")

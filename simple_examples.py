@@ -280,7 +280,7 @@ def example_7_easy_integration():
 # ============================================================================
 
 if __name__ == "__main__":
-    print("🌟 URI-Transformer Simple Examples")
+    print("STAR URI-Transformer Simple Examples")
     print("=" * 40)
     print()
     
@@ -330,4 +330,4 @@ if __name__ == "__main__":
     else:
         print("Invalid choice. Please run again.")
     
-    print("\n✨ Examples complete! Check the code for integration ideas.")
+    print("\nSPARKLES Examples complete! Check the code for integration ideas.")

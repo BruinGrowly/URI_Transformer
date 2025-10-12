@@ -32,6 +32,23 @@ try:
 except ImportError as e:
     print(f"Warning: Core frameworks not available: {e}")
     CORE_AVAILABLE = False
+    # Create fallback classes
+    @dataclass
+    class BiblicalCoordinates:
+        love: float = 0.0
+        power: float = 0.0
+        wisdom: float = 0.0
+        justice: float = 0.0
+    
+    @dataclass
+    class SemanticUnit:
+        text: str = ""
+        coordinates: BiblicalCoordinates = field(default_factory=BiblicalCoordinates)
+    
+    @dataclass
+    class SacredNumber:
+        value: int = 0
+        meaning: str = ""
 
 class SemanticLayer(Enum):
     """Layers of semantic processing in the transformer"""
