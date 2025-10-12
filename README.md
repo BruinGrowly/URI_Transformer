@@ -435,7 +435,6 @@ uri_transformer/
 ├── README.md                         # This file
 ├── LICENSE                           # MIT License
 └── requirements.txt                  # Dependencies
-```
 ├── src/
 │   ├── ice_uri_transformer.py           # ICE-Centric transformer (PRIMARY)
 │   ├── baseline_biblical_substrate.py   # Semantic foundation
