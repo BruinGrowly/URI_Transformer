@@ -1,13 +1,7 @@
-# Test Configuration
 numpy>=1.19.0
-scipy>=1.7.0
 pytest>=6.2.0
-
-# Development Dependencies
 black>=21.0.0
 flake8>=3.9.0
 mypy>=0.910
-
-# Documentation
 sphinx>=4.0.0
 sphinx-rtd-theme>=1.0.0
