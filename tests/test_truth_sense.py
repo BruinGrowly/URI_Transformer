@@ -1,6 +1,12 @@
 """
+
+This file contains the behavior-driven test suite for the
+TruthSenseTransformer, verifying the expected semantic outcomes
+of the new, meaning-driven architecture.
+"""
+
+import unittest
 Test Suite for the TruthSenseTransformer (Deep & Generative ICE)
-==============================================================
 
 This file contains the test suite for the refactored TruthSenseTransformer,
 verifying the deep, integrated ICE pipeline with deterministic tests.
