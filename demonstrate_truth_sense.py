@@ -1,9 +1,9 @@
 """
-Demonstration of the TruthSenseTransformer (Deep & Generative ICE)
-===================================================================
+Demonstration of the TruthSenseTransformer (Semantic Front-End)
+==============================================================
 
-This script showcases the full capabilities of the refactored TruthSenseTransformer,
-demonstrating its deep, integrated ICE pipeline and its new generative output.
+This script showcases the new, genuinely semantic capabilities of the
+TruthSenseTransformer, powered by the lexical Semantic Front-End.
 """
 
 from src.truth_sense_transformer import TruthSenseTransformer
@@ -14,12 +14,12 @@ def demonstrate():
     transformer = TruthSenseTransformer()
 
     test_phrases = [
-        "Love is the foundation of a just and powerful society, guided by wisdom.",
-        "Hate and division lead to the collapse of civilizations.", # Should have low Justice
-        "A truly powerful leader serves with humility and compassion."
+        "A truly powerful leader serves with humility, wisdom, and compassion.",
+        "His plan was built on deception and lies.",
+        "This society values justice and fairness above all."
     ]
 
-    print("--- TruthSense Transformer Demonstration (Deep & Generative ICE) ---")
+    print("--- TruthSense Transformer Demonstration (Semantic Front-End) ---")
 
     for i, phrase in enumerate(test_phrases):
         result = transformer.transform(phrase)
