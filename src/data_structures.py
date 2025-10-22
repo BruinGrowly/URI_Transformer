@@ -3,19 +3,21 @@ Data Structures
 ===============
 
 This module defines the core data structures used throughout the
-TruthSenseTransformer pipeline, breaking the circular import dependency.
+TruthSenseTransformer pipeline.
 """
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List
 from src.phi_geometric_engine import PhiCoordinate
 from src.frameworks import QLAEContext, ExecutionPlan
+
 
 @dataclass
 class Intent:
     """A structured object for the Intent stage."""
     purpose: str
     guiding_principles: List[str]
+
 
 @dataclass
 class TruthSenseResult:
