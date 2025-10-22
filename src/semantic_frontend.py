@@ -9,7 +9,6 @@ approach to map raw text to a 4D PhiCoordinate.
 
 from src.phi_geometric_engine import PhiCoordinate
 
-
 class SemanticFrontEnd:
     """
     A lexical-based semantic front-end that maps text to a PhiCoordinate.
@@ -57,7 +56,7 @@ class SemanticFrontEnd:
         """
         words = text.lower().replace('.', '').replace(',', '').split()
         if not words:
-            return PhiCoordinate(0.5, 0.5, 0.5, 0.5)
+            return PhiCoordinate(0.5, 0.5, 0.5, 0.5) # Neutral coordinate for empty text
 
         total_love, total_justice, total_power, total_wisdom = 0.0, 0.0, 0.0, 0.0
         word_count = 0
@@ -72,7 +71,7 @@ class SemanticFrontEnd:
                 word_count += 1
 
         if word_count == 0:
-            return PhiCoordinate(0.5, 0.5, 0.5, 0.5)
+            return PhiCoordinate(0.5, 0.5, 0.5, 0.5) # Neutral if no keywords found
 
         # Average the coordinates
         avg_love = total_love / word_count
