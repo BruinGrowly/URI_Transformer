@@ -2,6 +2,9 @@
 
 This script showcases the new, genuinely semantic capabilities of the
 TruthSenseTransformer, powered by the lexical Semantic Front-End.
+
+This script showcases the new, genuinely semantic capabilities of the
+TruthSenseTransformer, powered by the lexical Semantic Front-End.
 Demonstration of the TruthSenseTransformer (Deep & Generative ICE)
 
 This script showcases the full capabilities of the refactored TruthSenseTransformer,
