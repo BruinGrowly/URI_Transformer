@@ -72,7 +72,7 @@ class GoldenAngleRotator:
         angle = n_rotations * GOLDEN_ANGLE_RAD
         love, justice, power, wisdom = (
             coord.love, coord.justice, coord.power, coord.wisdom
-        )  # noqa
+        )
         love_new = love * np.cos(angle) - justice * np.sin(angle)
         justice_new = love * np.sin(angle) + justice * np.cos(angle)
         return PhiCoordinate(love_new, justice_new, power, wisdom)
