@@ -1,9 +1,5 @@
 """
 Demonstration of the TruthSenseTransformer (Hybrid Semantic Front-End)
-=====================================================================
-
-This script showcases the new, genuinely semantic capabilities of the
-TruthSenseTransformer, powered by the trained hybrid Semantic Front-End.
 """
 
 from src.truth_sense_transformer import TruthSenseTransformer
@@ -14,13 +10,12 @@ def demonstrate():
     transformer = TruthSenseTransformer()
 
     test_phrases = [
-        "A good leader rules with power, wisdom, and justice.",
-        "His actions were unjust and deceitful.",
-        "True wisdom is knowing you know nothing.",
-        "Love without truth is sentimentality."
+        "Love is the foundation of a just and powerful society, guided by wisdom.",
+        "Hate and division lead to the collapse of civilizations.", # Should have low Justice
+        "A truly powerful leader serves with humility and compassion."
     ]
 
-    print("--- TruthSense Transformer Demonstration (Hybrid Semantic Front-End) ---")
+    print("--- TruthSense Transformer Demonstration (Deep & Generative ICE) ---")
 
     for i, phrase in enumerate(test_phrases):
         result = transformer.transform(phrase)
