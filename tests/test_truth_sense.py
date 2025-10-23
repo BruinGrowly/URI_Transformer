@@ -2,6 +2,13 @@
 
 This file contains the behavior-driven test suite for the
 TruthSenseTransformer, verifying the expected semantic outcomes
+of the new, hybrid semantic front-end.
+"""
+
+import unittest
+
+This file contains the behavior-driven test suite for the
+TruthSenseTransformer, verifying the expected semantic outcomes
 of the new, meaning-driven architecture.
 """
 

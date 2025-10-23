@@ -94,6 +94,7 @@ Input: 'A truly powerful leader serves with humility and compassion.'
     'With to act with benevolent purpose (love: 0.66), within the domain of 'Energy', the recommended course of action is 'Authoritative Command' with a power magnitude of 0.92.'
 --------------------------
 ```
+This will create a `semantic_frontend_model.pth` file in your root directory.
 
 ---
 

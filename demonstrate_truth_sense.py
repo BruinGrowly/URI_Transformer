@@ -1,17 +1,5 @@
 """
-
-This script showcases the new, genuinely semantic capabilities of the
-TruthSenseTransformer, powered by the lexical Semantic Front-End.
-
-This script showcases the new, genuinely semantic capabilities of the
-TruthSenseTransformer, powered by the lexical Semantic Front-End.
-
-This script showcases the new, genuinely semantic capabilities of the
-TruthSenseTransformer, powered by the lexical Semantic Front-End.
-Demonstration of the TruthSenseTransformer (Deep & Generative ICE)
-
-This script showcases the full capabilities of the refactored TruthSenseTransformer,
-demonstrating its deep, integrated ICE pipeline and its new generative output.
+Demonstration of the TruthSenseTransformer (Hybrid Semantic Front-End)
 """
 
 from src.truth_sense_transformer import TruthSenseTransformer
