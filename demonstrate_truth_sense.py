@@ -1,9 +1,5 @@
 """
 Demonstration of the TruthSenseTransformer (Hybrid Semantic Front-End)
-=====================================================================
-
-This script showcases the new, genuinely semantic capabilities of the
-TruthSenseTransformer, powered by the trained hybrid Semantic Front-End.
 """
 
 from src.truth_sense_transformer import TruthSenseTransformer

@@ -1,6 +1,5 @@
 """
 Test Suite for the TruthSenseTransformer (Hybrid Semantic Front-End)
-===================================================================
 
 This file contains the behavior-driven test suite for the
 TruthSenseTransformer, verifying the expected semantic outcomes

@@ -1,6 +1,5 @@
 """
 Hybrid Semantic Front-End
-=========================
 
 This module implements the new, sophisticated hybrid semantic front-end.
 It uses a pre-trained language model for feature extraction and a custom
