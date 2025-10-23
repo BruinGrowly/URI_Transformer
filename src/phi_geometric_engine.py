@@ -70,7 +70,9 @@ class GoldenAngleRotator:
     def rotate(self, coord: PhiCoordinate, n_rotations: int) -> PhiCoordinate:
         """Rotates a 4D coordinate by the golden angle n times."""
         angle = n_rotations * GOLDEN_ANGLE_RAD
-        love, justice, power, wisdom = coord.love, coord.justice, coord.power, coord.wisdom
+        love, justice, power, wisdom = (
+            coord.love, coord.justice, coord.power, coord.wisdom
+        )
         love_new = love * np.cos(angle) - justice * np.sin(angle)
         justice_new = love * np.sin(angle) + justice * np.cos(angle)
         return PhiCoordinate(love_new, justice_new, power, wisdom)

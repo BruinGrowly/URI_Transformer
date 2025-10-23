@@ -7,7 +7,6 @@ implements a deep and integrated 7-stage ICE pipeline, processing
 structured objects and leveraging the evolved foundational frameworks.
 """
 
-import hashlib
 import numpy as np
 from src.phi_geometric_engine import (
     PhiCoordinate, GoldenSpiral, PhiExponentialBinner
@@ -17,6 +16,7 @@ from src.frameworks import (
 )
 from src.output_generator import OutputGenerator
 from src.data_structures import Intent, TruthSenseResult
+from src.semantic_frontend import SemanticFrontEnd
 
 
 class TruthSenseTransformer:
@@ -33,20 +33,15 @@ class TruthSenseTransformer:
             "god": GODFramework()
         }
         self.output_generator = OutputGenerator()
-
-    def _generate_deterministic_coord(self, text: str) -> PhiCoordinate:
-        """Generates a unique, deterministic 4D coordinate from a string."""
-        h = hashlib.sha256(text.encode()).hexdigest()
-        vals = [int(h[i:i+16], 16) / (16**16 - 1) for i in range(0, 64, 16)]
-        return PhiCoordinate(
-            love=vals[0], justice=vals[1], power=vals[2], wisdom=vals[3]
+        self.semantic_frontend = SemanticFrontEnd(
+            projection_head_path="semantic_frontend_model.pth"
         )
 
     def transform(self, input_text: str) -> TruthSenseResult:
         """Runs the full deep and integrated ICE pipeline."""
 
         # 1. Generate Raw Coordinate
-        raw_coord = self._generate_deterministic_coord(input_text)
+        raw_coord = self.semantic_frontend.text_to_coordinate(input_text)
 
         # 2. Align Coordinate with Anchor
         anchor_dist = self.phi_engine["spiral"].distance(

@@ -10,12 +10,13 @@ def demonstrate():
     transformer = TruthSenseTransformer()
 
     test_phrases = [
-        "Love is the foundation of a just and powerful society, guided by wisdom.",
-        "Hate and division lead to the collapse of civilizations.", # Should have low Justice
-        "A truly powerful leader serves with humility and compassion."
+        "A good leader rules with power, wisdom, and justice.",
+        "His actions were unjust and deceitful.",
+        "True wisdom is knowing you know nothing.",
+        "Love without truth is sentimentality."
     ]
 
-    print("--- TruthSense Transformer Demonstration (Deep & Generative ICE) ---")
+    print("--- TruthSense Transformer Demonstration (Hybrid Semantic Front-End) ---")
 
     for i, phrase in enumerate(test_phrases):
         result = transformer.transform(phrase)

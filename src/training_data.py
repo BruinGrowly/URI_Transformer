@@ -18,7 +18,10 @@ TRAINING_DATA = [
     # --- High Justice ---
     ("A just society is built on fairness and truth.", (0.7, 0.9, 0.6, 0.8)),
     ("He acted with integrity in all his dealings.", (0.6, 0.9, 0.7, 0.8)),
-    ("The judge delivered a fair and righteous verdict.", (0.5, 0.9, 0.8, 0.7)),
+    (
+        "The judge delivered a fair and righteous verdict.",
+        (0.5, 0.9, 0.8, 0.7)
+    ),
 
     # --- High Power ---
     ("The king had absolute power over his domain.", (0.3, 0.5, 0.9, 0.6)),
@@ -36,7 +39,10 @@ TRAINING_DATA = [
     ("Hate and division are destructive forces.", (0.1, 0.2, 0.8, 0.3)),
 
     # --- Balanced / Mixed ---
-    ("A good leader rules with power, wisdom, and justice.", (0.6, 0.8, 0.8, 0.8)),
+    (
+        "A good leader rules with power, wisdom, and justice.",
+        (0.6, 0.8, 0.8, 0.8)
+    ),
     ("Love without truth is sentimentality.", (0.8, 0.5, 0.4, 0.7)),
     ("Power without justice is tyranny.", (0.3, 0.2, 0.9, 0.4)),
 ]
