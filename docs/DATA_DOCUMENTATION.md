@@ -17,7 +17,7 @@ This document provides comprehensive documentation for the URI-Transformer train
 ## Overview
 
 ### Statistics
-- **Total Examples**: 518
+- **Total Examples**: 362
 - **Source**: Manually labeled by domain experts
 - **Format**: Python tuples (sentence, coordinates)
 - **Location**: `src/training_data.py`
@@ -518,7 +518,7 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for:
 ## Version History
 
 ### v2.0 (Current)
-- Expanded from 18 to 518 examples
+- Expanded from 18 to 362 examples
 - Added comprehensive domain coverage
 - Improved dimensional balance
 - Enhanced structural variety

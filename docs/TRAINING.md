@@ -52,7 +52,7 @@ python train_semantic_frontend.py
 ```
 
 This will:
-1. Load 518 labeled examples
+1. Load 362 labeled examples
 2. Split into train/val/test (70/15/15)
 3. Train for up to 200 epochs with early stopping
 4. Save the best model to `semantic_frontend_model.pth`
@@ -64,7 +64,7 @@ Training Semantic Front-End with Enhanced Validation
 ======================================================================
 
 Dataset Split:
-  Total examples:      518
+  Total examples:      362
   Training set:        362 (70%)
   Validation set:      78 (15%)
   Test set:            78 (15%)
@@ -474,7 +474,7 @@ optimizer = optim.Adam(frontend.projection_head.parameters(),
 
 ### Expected Results
 
-With the current dataset (518 examples):
+With the current dataset (362 examples):
 
 | Metric | Train | Validation | Test |
 |--------|-------|------------|------|

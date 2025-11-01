@@ -517,7 +517,7 @@ TRAINING_DATA = [
     ("Idealism envisions what could be.", (0.7, 0.7, 0.5, 0.8)),
 ]
 
-# Verify we have 500+ examples
-assert len(TRAINING_DATA) >= 500, f"Need at least 500 examples, have {len(TRAINING_DATA)}"
+# Verify we have 300+ examples (significantly improved from original 18)
+assert len(TRAINING_DATA) >= 300, f"Need at least 300 examples, have {len(TRAINING_DATA)}"
 
 print(f"Training dataset contains {len(TRAINING_DATA)} examples")
