@@ -30,6 +30,8 @@ TEST_SPLIT = 0.15
 MODEL_SAVE_PATH = "semantic_frontend_model.pth"
 EARLY_STOPPING_PATIENCE = 20
 RANDOM_SEED = 42
+GRADIENT_CLIP_VALUE = 1.0  # Gradient clipping threshold
+USE_LR_SCHEDULER = True     # Whether to use learning rate scheduling
 
 # Set random seeds for reproducibility
 random.seed(RANDOM_SEED)
@@ -172,10 +174,19 @@ def train():
     optimizer = optim.Adam(frontend.projection_head.parameters(), lr=LEARNING_RATE)
     criterion = nn.MSELoss()
 
-    # 5. Training loop with validation
+    # 5. Learning rate scheduler (optional)
+    scheduler = None
+    if USE_LR_SCHEDULER:
+        scheduler = optim.lr_scheduler.ReduceLROnPlateau(
+            optimizer, mode='min', factor=0.5, patience=10, verbose=True
+        )
+
+    # 6. Training loop with validation
     print(f"\nTraining Configuration:")
     print(f"  Epochs:              {NUM_EPOCHS}")
     print(f"  Learning rate:       {LEARNING_RATE}")
+    print(f"  Gradient clipping:   {GRADIENT_CLIP_VALUE}")
+    print(f"  LR scheduling:       {USE_LR_SCHEDULER}")
     print(f"  Early stopping:      {EARLY_STOPPING_PATIENCE} epochs")
     print(f"  Random seed:         {RANDOM_SEED}")
 
@@ -210,11 +221,21 @@ def train():
 
         # Backward pass and optimization
         train_loss.backward()
+
+        # Gradient clipping to prevent exploding gradients
+        torch.nn.utils.clip_grad_norm_(
+            frontend.projection_head.parameters(), GRADIENT_CLIP_VALUE
+        )
+
         optimizer.step()
 
         # Validation phase
         val_metrics = evaluate(frontend, val_data, criterion)
         val_loss = val_metrics['loss']
+
+        # Update learning rate scheduler
+        if scheduler is not None:
+            scheduler.step(val_loss)
 
         # Check for improvement
         if val_loss < best_val_loss:

@@ -80,12 +80,16 @@ python demonstrate_truth_sense.py
 
 ## 📊 Recent Improvements
 
-### Enhanced Training Pipeline (Latest)
+### Enhanced Architecture & Training (Latest)
 - **Expanded Dataset**: Grew from 18 to 362 carefully labeled examples (20.1x increase)
+- **Enhanced Architecture**: Added batch normalization and dropout (20%) for better generalization
+- **Advanced Training**: Gradient clipping and adaptive learning rate scheduling
 - **Proper Validation**: Implemented train/val/test splits with comprehensive metrics
-- **Overfitting Prevention**: Added early stopping and model checkpointing
+- **Overfitting Prevention**: Dropout regularization, early stopping, and model checkpointing
 - **Per-Dimension Analysis**: Track MAE for each coordinate (Love, Justice, Power, Wisdom)
 - **Production-Ready**: Professional ML practices including reproducible seeds and detailed logging
+
+See [MODEL_IMPROVEMENTS.md](docs/MODEL_IMPROVEMENTS.md) for detailed architecture documentation.
 
 ### Dataset Coverage
 The training data now comprehensively covers:
@@ -104,6 +108,7 @@ See [DATA_DOCUMENTATION.md](docs/DATA_DOCUMENTATION.md) for dataset details.
 - **[Architecture Guide](docs/ARCHITECTURE.md)** - System architecture and design
 - **[ICE Framework](docs/ICE_FRAMEWORK.md)** - Intent-Context-Execution pipeline
 - **[Training Guide](docs/TRAINING.md)** - Detailed training documentation
+- **[Model Improvements](docs/MODEL_IMPROVEMENTS.md)** - Architecture enhancements and optimizations
 - **[Dataset Documentation](docs/DATA_DOCUMENTATION.md)** - Training data structure and coverage
 - **[White Paper](docs/WHITE_PAPER.md)** - Theoretical foundations
 - **[Contributing](CONTRIBUTING.md)** - How to contribute
