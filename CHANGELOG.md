@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2025-11-01
 
 ### Added - Training Data Expansion
-- **Expanded training dataset from 18 to 518 examples** (28.8x increase)
+- **Expanded training dataset from 18 to 362 examples** (20.1x increase)
 - Comprehensive coverage of 4D semantic space (Love, Justice, Power, Wisdom)
 - New data categories:
   - Pure dimension examples (100)
@@ -91,7 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Version | Examples | Coverage | Quality |
 |---------|----------|----------|---------|
 | 1.0.0 | 18 | Basic | Manual |
-| 2.0.0 | 518 | Comprehensive | Validated |
+| 2.0.0 | 362 | Comprehensive | Validated |
 
 ### Training Process
 | Feature | 1.0.0 | 2.0.0 |
@@ -131,7 +131,7 @@ python train_semantic_frontend.py
 ```bash
 python train_semantic_frontend.py
 ```
-- Trains on 518 examples (auto-split)
+- Trains on 362 examples (auto-split)
 - Validates during training
 - Saves best validation model
 - Provides comprehensive metrics

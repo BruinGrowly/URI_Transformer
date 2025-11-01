@@ -47,7 +47,7 @@ python train_semantic_frontend.py
 ```
 
 The training script now includes:
-- **518 curated training examples** covering the full 4D semantic space
+- **362 curated training examples** covering the full 4D semantic space
 - **Automatic train/validation/test splits** (70/15/15)
 - **Comprehensive evaluation metrics** (MAE, MSE, R², cosine similarity)
 - **Early stopping** to prevent overfitting
@@ -55,7 +55,7 @@ The training script now includes:
 
 Training output provides detailed metrics:
 ```
-Training dataset contains 518 examples
+Training dataset contains 362 examples
 Dataset Split:
   Training set:        362 (70%)
   Validation set:      78 (15%)
@@ -81,7 +81,7 @@ python demonstrate_truth_sense.py
 ## 📊 Recent Improvements
 
 ### Enhanced Training Pipeline (Latest)
-- **Expanded Dataset**: Grew from 18 to 518 carefully labeled examples (28.8x increase)
+- **Expanded Dataset**: Grew from 18 to 362 carefully labeled examples (20.1x increase)
 - **Proper Validation**: Implemented train/val/test splits with comprehensive metrics
 - **Overfitting Prevention**: Added early stopping and model checkpointing
 - **Per-Dimension Analysis**: Track MAE for each coordinate (Love, Justice, Power, Wisdom)
