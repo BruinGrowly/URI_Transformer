@@ -56,10 +56,6 @@ class TruthSenseTransformer:
             aligned_coord.power, aligned_coord
         )
 
-        final_output = self.output_generator.generate(
-            intent, context, execution
-        )
-
         semantic_integrity = 1.0  # Placeholder
 
         deception_score = self.calculate_deception_score(aligned_coord.justice)
@@ -68,13 +64,13 @@ class TruthSenseTransformer:
 
         velocity, acceleration = calculate_trajectory(raw_coord, aligned_coord)
 
-        return TruthSenseResult(
+        result = TruthSenseResult(
             raw_coord=raw_coord,
             aligned_coord=aligned_coord,
             intent=intent,
             context=context,
             execution=execution,
-            final_output=final_output,
+            final_output="",  # Placeholder
             anchor_distance=anchor_dist,
             harmony_index=harmony_index,
             semantic_integrity=semantic_integrity,
@@ -83,6 +79,9 @@ class TruthSenseTransformer:
             foundational_principle=foundational_principle.name,
             trajectory=Trajectory(velocity=velocity, acceleration=acceleration),
         )
+
+        result.final_output = self.output_generator.synthesize_output(result)
+        return result
 
     def calculate_deception_score(self, justice_score: float) -> float:
         """Calculates the deception score based on the Justice dimension."""
