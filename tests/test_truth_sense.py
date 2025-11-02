@@ -21,6 +21,10 @@ from src.semantic_frontend import SemanticFrontEnd
 from src.phi_geometric_engine import PhiCoordinate
 
 
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
+
+
 class TestSemanticBehavior(unittest.TestCase):
     """A behavior-driven test suite for the hybrid semantic front-end."""
 

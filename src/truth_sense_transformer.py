@@ -68,10 +68,9 @@ class TruthSenseTransformer:
 
         # 3. Process through Deep ICE Framework
         # INTENT (Spiritual Domain)
-        guiding_principles = [(
-            "Guided by wisdom and understanding "
-            f"(W: {aligned_coord.wisdom:.2f})"
-        )]
+        guiding_principles = [
+            f"Guided by wisdom (W: {aligned_coord.wisdom:.2f})"
+        ]
         intent = Intent(
             purpose=f"Benevolent purpose (L: {aligned_coord.love:.2f})",
             guiding_principles=guiding_principles
