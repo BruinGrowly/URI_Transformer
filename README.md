@@ -110,7 +110,6 @@ See [DATA_DOCUMENTATION.md](docs/DATA_DOCUMENTATION.md) for dataset details.
 - **[Training Guide](docs/TRAINING.md)** - Detailed training documentation
 - **[Model Improvements](docs/MODEL_IMPROVEMENTS.md)** - Architecture enhancements and optimizations
 - **[Dataset Documentation](docs/DATA_DOCUMENTATION.md)** - Training data structure and coverage
-- **[White Paper](docs/WHITE_PAPER.md)** - Theoretical foundations
 - **[Contributing](CONTRIBUTING.md)** - How to contribute
 
 ---

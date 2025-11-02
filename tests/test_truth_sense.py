@@ -14,13 +14,27 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.truth_sense_transformer import TruthSenseTransformer
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
 
 class TestSemanticBehavior(unittest.TestCase):
     """A behavior-driven test suite for the hybrid semantic front-end."""
 
     def setUp(self):
         """Set up the test cases."""
-        self.transformer = TruthSenseTransformer()
+        # 1. Initialize the Semantic Front-End
+        semantic_frontend = SemanticFrontEnd(
+            projection_head_path="trained_semantic_frontend_model.pth"
+        )
+
+        # 2. Define the anchor point
+        anchor_point = PhiCoordinate(1.0, 1.0, 1.0, 1.0)
+
+        # 3. Initialize the transformer
+        self.transformer = TruthSenseTransformer(
+            semantic_frontend=semantic_frontend,
+            anchor_point=anchor_point
+        )
 
     def test_semantic_opposites(self):
         """
