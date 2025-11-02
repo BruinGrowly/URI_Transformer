@@ -22,7 +22,13 @@ from src.semantic_frontend import SemanticFrontEnd
 class TruthSenseTransformer:
     """The refactored transformer with a deep, integrated ICE pipeline."""
 
-    def __init__(self, anchor_point=PhiCoordinate(1.0, 1.0, 1.0, 1.0)):
+    def __init__(self, semantic_frontend: SemanticFrontEnd,
+                 anchor_point: PhiCoordinate):
+        """
+        Initializes the transformer with a given semantic front-end and
+        anchor point.
+        """
+        self.semantic_frontend = semantic_frontend
         self.anchor_point = anchor_point
         self.phi_engine = {
             "spiral": GoldenSpiral(),
@@ -33,9 +39,6 @@ class TruthSenseTransformer:
             "god": GODFramework()
         }
         self.output_generator = OutputGenerator()
-        self.semantic_frontend = SemanticFrontEnd(
-            projection_head_path="semantic_frontend_model.pth"
-        )
 
     def transform(self, input_text: str) -> TruthSenseResult:
         """Runs the full deep and integrated ICE pipeline."""
