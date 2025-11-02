@@ -14,6 +14,8 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.truth_sense_transformer import TruthSenseTransformer
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
 
 from src.semantic_frontend import SemanticFrontEnd
 from src.phi_geometric_engine import PhiCoordinate
