@@ -34,5 +34,7 @@ class TruthSenseResult:
 
     # Metrics
     anchor_distance: float
+    harmony_index: float
     semantic_integrity: float
     truth_sense_validation: bool
+    deception_score: float

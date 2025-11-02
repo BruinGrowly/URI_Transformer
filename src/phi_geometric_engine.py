@@ -25,6 +25,15 @@ class PhiCoordinate:
     def to_numpy(self):
         return np.array([self.love, self.justice, self.power, self.wisdom])
 
+    def __sub__(self, other: 'PhiCoordinate') -> 'PhiCoordinate':
+        """Subtracts another PhiCoordinate from this one."""
+        return PhiCoordinate(
+            self.love - other.love,
+            self.justice - other.justice,
+            self.power - other.power,
+            self.wisdom - other.wisdom,
+        )
+
 
 class FibonacciSequence:
     """Generates Fibonacci numbers for relationship expansion."""
@@ -41,6 +50,11 @@ class FibonacciSequence:
         return round((PHI**n - (1 - PHI)**n) / sqrt5)
 
 
+def calculate_harmony_index(anchor_distance: float) -> float:
+    """Calculates the harmony index from the anchor distance."""
+    return 1 / (1 + anchor_distance)
+
+
 class GoldenSpiral:
     """Calculates the natural distance between concepts in 4D space."""
     def __init__(self, a=1.0, b=0.30635):
@@ -48,21 +62,10 @@ class GoldenSpiral:
         self.b = b
 
     def distance(self, coord1: PhiCoordinate, coord2: PhiCoordinate) -> float:
-        """Calculates the golden spiral arc length between two 4D points."""
+        """Calculates the Euclidean distance between two 4D points."""
         v1 = coord1.to_numpy()
         v2 = coord2.to_numpy()
-        euclidean_dist = np.linalg.norm(v1 - v2)
-
-        dot_product = np.dot(v1, v2)
-        norm_product = np.linalg.norm(v1) * np.linalg.norm(v2)
-
-        if norm_product == 0:
-            return 0.0
-
-        cos_theta = dot_product / norm_product
-        theta = np.arccos(np.clip(cos_theta, -1.0, 1.0))
-
-        return euclidean_dist * (PHI**(theta / (np.pi / 2)))
+        return np.linalg.norm(v1 - v2)
 
 
 class GoldenAngleRotator:
@@ -70,11 +73,16 @@ class GoldenAngleRotator:
     def rotate(self, coord: PhiCoordinate, n_rotations: int) -> PhiCoordinate:
         """Rotates a 4D coordinate by the golden angle n times."""
         angle = n_rotations * GOLDEN_ANGLE_RAD
-        love, justice, power, wisdom = (
-            coord.love, coord.justice, coord.power, coord.wisdom
+        love, justice = coord.love, coord.justice
+        power, wisdom = coord.power, coord.wisdom
+        love_new = (
+            love * np.cos(angle)
+            - justice * np.sin(angle)
         )
-        love_new = love * np.cos(angle) - justice * np.sin(angle)
-        justice_new = love * np.sin(angle) + justice * np.cos(angle)
+        justice_new = (
+            love * np.sin(angle)
+            + justice * np.cos(angle)
+        )
         return PhiCoordinate(love_new, justice_new, power, wisdom)
 
 

@@ -55,7 +55,7 @@ This will:
 1. Load 362 labeled examples
 2. Split into train/val/test (70/15/15)
 3. Train for up to 200 epochs with early stopping
-4. Save the best model to `semantic_frontend_model.pth`
+4. Save the best model to `trained_semantic_frontend_model.pth`
 
 ### Expected Output
 ```
@@ -65,15 +65,17 @@ Training Semantic Front-End with Enhanced Validation
 
 Dataset Split:
   Total examples:      362
-  Training set:        362 (70%)
-  Validation set:      78 (15%)
-  Test set:            78 (15%)
+  Training set:        253 (70%)
+  Validation set:      54 (15%)
+  Test set:            55 (15%)
 
 Initializing model...
 
 Training Configuration:
   Epochs:              200
   Learning rate:       0.001
+  Gradient clipping:   1.0
+  LR scheduling:       True
   Early stopping:      20 epochs
   Random seed:         42
 
@@ -81,8 +83,8 @@ Training Configuration:
 Starting Training...
 ======================================================================
 
-Epoch [  1/200] | Train Loss: 0.0523 | Val Loss: 0.0489 | Val MAE: 0.1532 | Val R²: 0.8234 | No Improve: 0
-Epoch [ 10/200] | Train Loss: 0.0234 | Val Loss: 0.0256 | Val MAE: 0.0987 | Val R²: 0.8956 | No Improve: 0
+Epoch [  1/200] | Train Loss: 0.0826 | Val Loss: 0.0568 | Val MAE: 0.2063 | Val R²: -0.2326 | No Improve: 0
+Epoch [ 10/200] | Train Loss: 0.0174 | Val Loss: 0.0423 | Val MAE: 0.1779 | Val R²: 0.0809 | No Improve: 0
 ...
 
 ======================================================================
@@ -90,39 +92,39 @@ Final Evaluation
 ======================================================================
 
 Training Set:
-  Loss:              0.0198
-  MAE:               0.0856
-  MSE:               0.0198
-  R²:                0.9134
-  Cosine Similarity: 0.9567
-  MAE (Love):        0.0823
-  MAE (Justice):     0.0912
-  MAE (Power):       0.0845
-  MAE (Wisdom):      0.0843
+  Loss:              0.0010
+  MAE:               0.0224
+  MSE:               0.0010
+  R²:                0.9765
+  Cosine Similarity: 0.9985
+  MAE (Love):        0.0236
+  MAE (Justice):     0.0245
+  MAE (Power):       0.0198
+  MAE (Wisdom):      0.0215
 
 Validation Set:
-  Loss:              0.0256
-  MAE:               0.0987
-  MSE:               0.0256
-  R²:                0.8956
-  Cosine Similarity: 0.9423
+  Loss:              0.0138
+  MAE:               0.0868
+  MSE:               0.0138
+  R²:                0.7004
+  Cosine Similarity: 0.9859
   ...
 
 Test Set:
-  Loss:              0.0245
-  MAE:               0.0945
-  MSE:               0.0245
-  R²:                0.8987
-  Cosine Similarity: 0.9456
+  Loss:              0.0202
+  MAE:               0.1015
+  MSE:               0.0202
+  R²:                0.5560
+  Cosine Similarity: 0.9846
   ...
 
 ======================================================================
 ✅ Training Complete!
 ======================================================================
-Best model saved to: semantic_frontend_model.pth
-Best validation loss: 0.0256
-Test MAE: 0.0945
-Test R²: 0.8987
+Best model saved to: trained_semantic_frontend_model.pth
+Best validation loss: 0.0134
+Test MAE: 0.1015
+Test R²: 0.5560
 ======================================================================
 ```
 
@@ -137,7 +139,7 @@ The training script loads data from `src/training_data.py`:
 TRAINING_DATA = [
     ("True love is compassionate and kind.", (0.9, 0.7, 0.5, 0.8)),
     ("Justice demands equal treatment under law.", (0.5, 0.95, 0.7, 0.75)),
-    # ... 516 more examples
+    # ... 360 more examples
 ]
 ```
 
@@ -149,9 +151,9 @@ Each example is a tuple of:
 
 Data is randomly shuffled and split:
 ```python
-train_ratio = 0.70  # 362 examples
-val_ratio   = 0.15  #  78 examples
-test_ratio  = 0.15  #  78 examples
+train_ratio = 0.70  # 253 examples
+val_ratio   = 0.15  #  54 examples
+test_ratio  = 0.15  #  55 examples
 ```
 
 The split uses a fixed random seed (42) for reproducibility.
@@ -196,7 +198,7 @@ TEST_SPLIT = 0.15               # 15% for testing
 RANDOM_SEED = 42                # For consistent splits
 
 # Output
-MODEL_SAVE_PATH = "semantic_frontend_model.pth"
+MODEL_SAVE_PATH = "trained_semantic_frontend_model.pth"
 ```
 
 ### Model Architecture

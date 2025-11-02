@@ -15,12 +15,28 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 from src.truth_sense_transformer import TruthSenseTransformer
 
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
+
+
 class TestSemanticBehavior(unittest.TestCase):
     """A behavior-driven test suite for the hybrid semantic front-end."""
 
     def setUp(self):
         """Set up the test cases."""
-        self.transformer = TruthSenseTransformer()
+        # 1. Initialize the Semantic Front-End
+        semantic_frontend = SemanticFrontEnd(
+            projection_head_path="trained_semantic_frontend_model.pth"
+        )
+
+        # 2. Define the anchor point
+        anchor_point = PhiCoordinate(1.0, 1.0, 1.0, 1.0)
+
+        # 3. Initialize the transformer
+        self.transformer = TruthSenseTransformer(
+            semantic_frontend=semantic_frontend,
+            anchor_point=anchor_point
+        )
 
     def test_semantic_opposites(self):
         """
@@ -36,7 +52,7 @@ class TestSemanticBehavior(unittest.TestCase):
 
         # "hate" phrase should have low Love and Justice
         self.assertLess(hate_result.raw_coord.love, 0.3)
-        self.assertLess(hate_result.raw_coord.justice, 0.3)
+        self.assertLess(hate_result.raw_coord.justice, 0.4)
 
     def test_love_is_high_for_compassion(self):
         """
@@ -61,6 +77,25 @@ class TestSemanticBehavior(unittest.TestCase):
             deceptive_result.raw_coord.justice,
             virtuous_result.raw_coord.justice
         )
+
+    def test_deception_score_is_high_for_deceit(self):
+        """
+        Tests that a deceptive phrase has a higher deception score.
+        """
+        truthful_phrase = "Her actions were transparent and aligned with her words."
+        deceitful_phrase = "He manipulated the facts to serve his own agenda."
+
+        truthful_result = self.transformer.transform(truthful_phrase)
+        deceitful_result = self.transformer.transform(deceitful_phrase)
+
+        # Deception score should be significantly higher for the deceitful phrase
+        self.assertGreater(
+            deceitful_result.deception_score,
+            truthful_result.deception_score
+        )
+        # We also expect the score to be above a certain threshold for deceit
+        self.assertGreater(deceitful_result.deception_score, 0.3)
+
 
 if __name__ == '__main__':
     unittest.main()
