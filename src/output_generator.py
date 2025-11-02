@@ -1,39 +1,21 @@
 """
-Generative Output Module
-========================
-
-This module takes the structured outputs from the deep ICE pipeline
-and synthesizes them into a new, meaningful, and context-aware
-output sentence.
+Simple Output Generator
 """
 
-from src.data_structures import Intent
-from src.frameworks import QLAEContext, ExecutionPlan
-
+from src.data_structures import Intent, QLAEContext, ExecutionPlan
 
 class OutputGenerator:
-    """Synthesizes structured ICE outputs into a final sentence."""
-
+    """A simple output generator."""
     def generate(
-        self, intent: Intent, context: QLAEContext, execution: ExecutionPlan
+        self,
+        intent: Intent,
+        context: QLAEContext,
+        execution: ExecutionPlan
     ) -> str:
-        """Generates a final output sentence."""
-
-        intent_phrase = f"With {intent.purpose.lower()}"
-
-        if not context.is_valid:
-            context_phrase = "in a context of questionable truth"
-        else:
-            context_phrase = (
-                f"within the domain of '{context.primary_domain.value}'"
-            )
-
-        execution_phrase = (
-            f"the recommended course of action is "
-            f"'{execution.strategy.value}' with a power magnitude of "
-            f"{execution.magnitude:.2f}."
-        )
-
+        """Generates a final output string."""
         return (
-            f"{intent_phrase}, {context_phrase}, {execution_phrase}"
+            f"With {intent.purpose}, within the domain of "
+            f"'{context.primary_domain.value}', the recommended course of "
+            f"action is '{execution.strategy.value}' with a power "
+            f"magnitude of {execution.magnitude:.2f}."
         )
