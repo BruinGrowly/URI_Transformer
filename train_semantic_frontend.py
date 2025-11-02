@@ -27,7 +27,7 @@ BATCH_SIZE = 32
 TRAIN_SPLIT = 0.70
 VAL_SPLIT = 0.15
 TEST_SPLIT = 0.15
-MODEL_SAVE_PATH = "semantic_frontend_model.pth"
+MODEL_SAVE_PATH = "trained_semantic_frontend_model.pth"
 EARLY_STOPPING_PATIENCE = 20
 RANDOM_SEED = 42
 GRADIENT_CLIP_VALUE = 1.0  # Gradient clipping threshold
@@ -178,7 +178,7 @@ def train():
     scheduler = None
     if USE_LR_SCHEDULER:
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=0.5, patience=10, verbose=True
+            optimizer, mode='min', factor=0.5, patience=10
         )
 
     # 6. Training loop with validation

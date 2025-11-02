@@ -14,6 +14,12 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.truth_sense_transformer import TruthSenseTransformer
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
+
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
+
 
 from src.semantic_frontend import SemanticFrontEnd
 from src.phi_geometric_engine import PhiCoordinate
@@ -77,6 +83,25 @@ class TestSemanticBehavior(unittest.TestCase):
             deceptive_result.raw_coord.justice,
             virtuous_result.raw_coord.justice
         )
+
+    def test_deception_score_is_high_for_deceit(self):
+        """
+        Tests that a deceptive phrase has a higher deception score.
+        """
+        truthful_phrase = "Her actions were transparent and aligned with her words."
+        deceitful_phrase = "He manipulated the facts to serve his own agenda."
+
+        truthful_result = self.transformer.transform(truthful_phrase)
+        deceitful_result = self.transformer.transform(deceitful_phrase)
+
+        # Deception score should be significantly higher for the deceitful phrase
+        self.assertGreater(
+            deceitful_result.deception_score,
+            truthful_result.deception_score
+        )
+        # We also expect the score to be above a certain threshold for deceit
+        self.assertGreater(deceitful_result.deception_score, 0.3)
+
 
 if __name__ == '__main__':
     unittest.main()
