@@ -1,2 +1,3 @@
 __pycache__/
 *.pth
+trained_semantic_frontend_model.pth
