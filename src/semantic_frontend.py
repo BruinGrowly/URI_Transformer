@@ -22,20 +22,32 @@ class ProjectionHead(nn.Module):
     """
     def __init__(self, input_dim=768, output_dim=4, dropout_rate=0.2):
         super().__init__()
-        self.fc1 = nn.Linear(input_dim, 128)
-        self.bn1 = nn.BatchNorm1d(128)
-        self.relu = nn.ReLU()
-        self.dropout = nn.Dropout(dropout_rate)
-        self.fc2 = nn.Linear(128, output_dim)
-        self.sigmoid = nn.Sigmoid()  # To ensure output is in [0, 1]
+        self.fc1 = nn.Linear(input_dim, 256)
+        self.bn1 = nn.BatchNorm1d(256)
+        self.relu1 = nn.ReLU()
+        self.dropout1 = nn.Dropout(dropout_rate)
+
+        self.fc2 = nn.Linear(256, 128)
+        self.bn2 = nn.BatchNorm1d(128)
+        self.relu2 = nn.ReLU()
+        self.dropout2 = nn.Dropout(dropout_rate)
+
+        self.fc3 = nn.Linear(128, output_dim)
+        self.sigmoid = nn.Sigmoid()  # Scale output via sigmoid
 
     def forward(self, x):
         x = self.fc1(x)
         x = self.bn1(x)
-        x = self.relu(x)
-        x = self.dropout(x)
+        x = self.relu1(x)
+        x = self.dropout1(x)
+
         x = self.fc2(x)
-        x = self.sigmoid(x)
+        x = self.bn2(x)
+        x = self.relu2(x)
+        x = self.dropout2(x)
+
+        x = self.fc3(x)
+        x = self.sigmoid(x) * 2  # Scale output to [0, 2]
         return x
 
 
