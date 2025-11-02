@@ -51,6 +51,10 @@ def demonstrate():
         print(f"    Deception Score: {result.deception_score:.2f}")
         print(f"    Foundational Principle: '{result.foundational_principle}'")
 
+        print(f"\n  Semantic Calculus:")
+        print(f"    Velocity:  L={result.trajectory.velocity.love:.2f}, J={result.trajectory.velocity.justice:.2f}, P={result.trajectory.velocity.power:.2f}, W={result.trajectory.velocity.wisdom:.2f}")
+        print(f"    Acceleration: {result.trajectory.acceleration:.2f}")
+
         print(f"\n  Final Generative Output:")
         print(f"    '{result.final_output}'")
         print("--------------------------")

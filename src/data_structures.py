@@ -43,6 +43,12 @@ class Intent:
     guiding_principles: List[str] = field(default_factory=list)
 
 @dataclass
+class Trajectory:
+    """Represents the semantic trajectory between two coordinates."""
+    velocity: PhiCoordinate
+    acceleration: float
+
+@dataclass
 class TruthSenseResult:
     """The final, structured output of the TruthSenseTransformer."""
     raw_coord: PhiCoordinate
@@ -57,3 +63,4 @@ class TruthSenseResult:
     truth_sense_validation: bool
     deception_score: float
     foundational_principle: str
+    trajectory: Trajectory

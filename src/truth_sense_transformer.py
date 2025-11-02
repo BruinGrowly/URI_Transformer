@@ -10,9 +10,10 @@ from src.phi_geometric_engine import (
 )
 from src.frameworks import QLAEFramework, GODFramework
 from src.output_generator import OutputGenerator
-from src.data_structures import Intent, TruthSenseResult
+from src.data_structures import Intent, TruthSenseResult, Trajectory
 from src.semantic_frontend import SemanticFrontEnd
 from src.knowledge_graph import KnowledgeGraph
+from src.semantic_calculus import calculate_trajectory
 
 class TruthSenseTransformer:
     """The main transformer class."""
@@ -65,6 +66,8 @@ class TruthSenseTransformer:
 
         foundational_principle = self.knowledge_graph.find_closest_principle(aligned_coord)
 
+        velocity, acceleration = calculate_trajectory(raw_coord, aligned_coord)
+
         return TruthSenseResult(
             raw_coord=raw_coord,
             aligned_coord=aligned_coord,
@@ -78,6 +81,7 @@ class TruthSenseTransformer:
             truth_sense_validation=truth_sense_validation,
             deception_score=deception_score,
             foundational_principle=foundational_principle.name,
+            trajectory=Trajectory(velocity=velocity, acceleration=acceleration),
         )
 
     def calculate_deception_score(self, justice_score: float) -> float:
