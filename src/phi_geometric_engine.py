@@ -29,11 +29,6 @@ def calculate_harmony_index(anchor_distance: float) -> float:
     """Calculates the harmony index from the anchor distance."""
     return 1 / (1 + anchor_distance)
 
-def calculate_harmony_index(anchor_distance: float) -> float:
-    """Calculates the harmony index from the anchor distance."""
-    return 1 / (1 + anchor_distance)
-
-
 class GoldenSpiral:
     """Calculates the natural distance between concepts in 4D space."""
     def distance(self, coord1: PhiCoordinate, coord2: PhiCoordinate) -> float:

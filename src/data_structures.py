@@ -56,3 +56,4 @@ class TruthSenseResult:
     semantic_integrity: float
     truth_sense_validation: bool
     deception_score: float
+    foundational_principle: str

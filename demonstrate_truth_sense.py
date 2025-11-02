@@ -49,11 +49,7 @@ def demonstrate():
         print(f"\n  Metrics:")
         print(f"    Harmony Index: {result.harmony_index:.2f}")
         print(f"    Deception Score: {result.deception_score:.2f}")
-
-        print(f"\n  Metrics:")
-        print(f"    Harmony Index: {result.harmony_index:.2f}")
-        print(f"    Semantic Integrity: {result.semantic_integrity:.2f}")
-        print(f"    Deception Score: {result.deception_score:.2f}")
+        print(f"    Foundational Principle: '{result.foundational_principle}'")
 
         print(f"\n  Final Generative Output:")
         print(f"    '{result.final_output}'")

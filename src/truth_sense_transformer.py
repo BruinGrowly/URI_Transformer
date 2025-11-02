@@ -12,6 +12,7 @@ from src.frameworks import QLAEFramework, GODFramework
 from src.output_generator import OutputGenerator
 from src.data_structures import Intent, TruthSenseResult
 from src.semantic_frontend import SemanticFrontEnd
+from src.knowledge_graph import KnowledgeGraph
 
 class TruthSenseTransformer:
     """The main transformer class."""
@@ -24,6 +25,7 @@ class TruthSenseTransformer:
         self.phi_engine = {"spiral": GoldenSpiral()}
         self.frameworks = {"qlae": QLAEFramework(), "god": GODFramework()}
         self.output_generator = OutputGenerator()
+        self.knowledge_graph = KnowledgeGraph()
 
     def transform(self, input_text: str) -> TruthSenseResult:
         """Runs the full transformation pipeline."""
@@ -61,6 +63,8 @@ class TruthSenseTransformer:
 
         deception_score = self.calculate_deception_score(aligned_coord.justice)
 
+        foundational_principle = self.knowledge_graph.find_closest_principle(aligned_coord)
+
         return TruthSenseResult(
             raw_coord=raw_coord,
             aligned_coord=aligned_coord,
@@ -73,6 +77,7 @@ class TruthSenseTransformer:
             semantic_integrity=semantic_integrity,
             truth_sense_validation=truth_sense_validation,
             deception_score=deception_score,
+            foundational_principle=foundational_principle.name,
         )
 
     def calculate_deception_score(self, justice_score: float) -> float:

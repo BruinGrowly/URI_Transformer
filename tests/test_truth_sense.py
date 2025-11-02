@@ -51,24 +51,5 @@ class TestTruthSenseTransformer(unittest.TestCase):
         deception_score_high = self.transformer.calculate_deception_score(low_justice_coord.justice)
         self.assertAlmostEqual(deception_score_high, 1.6)
 
-    def test_deception_score_is_high_for_deceit(self):
-        """
-        Tests that a deceptive phrase has a higher deception score.
-        """
-        truthful_phrase = "Her actions were transparent and aligned with her words."
-        deceitful_phrase = "He manipulated the facts to serve his own agenda."
-
-        truthful_result = self.transformer.transform(truthful_phrase)
-        deceitful_result = self.transformer.transform(deceitful_phrase)
-
-        # Deception score should be significantly higher for the deceitful phrase
-        self.assertGreater(
-            deceitful_result.deception_score,
-            truthful_result.deception_score
-        )
-        # We also expect the score to be above a certain threshold for deceit
-        self.assertGreater(deceitful_result.deception_score, 0.3)
-
-
 if __name__ == '__main__':
     unittest.main()

@@ -10,7 +10,7 @@ import random
 from torch.utils.data import DataLoader, TensorDataset
 
 # Configuration
-NUM_EPOCHS = 500
+NUM_EPOCHS = 1000
 LEARNING_RATE = 0.001
 BATCH_SIZE = 8
 MODEL_SAVE_PATH = "trained_semantic_frontend_model.pth"
