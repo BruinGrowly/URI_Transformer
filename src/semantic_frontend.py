@@ -1,10 +1,5 @@
 """
 Hybrid Semantic Front-End
-
-This module implements the new, sophisticated hybrid semantic front-end.
-It uses a pre-trained language model for feature extraction and a custom
-neural network "projection head" to map those features to our 4D
-PhiCoordinate space.
 """
 
 import torch
@@ -12,44 +7,23 @@ from torch import nn
 from transformers import AutoTokenizer, AutoModel
 from src.phi_geometric_engine import PhiCoordinate
 
-
 class ProjectionHead(nn.Module):
     """
-    A small neural network that projects a high-dimensional vector
-    into our 4D PhiCoordinate space.
-
-    Enhanced with dropout and batch normalization for better generalization.
+    A simple neural network that projects a high-dimensional vector
+    into our 4D PhiCoordinate space. It uses a single linear layer
+    to directly map embeddings to coordinates.
     """
-    def __init__(self, input_dim=768, output_dim=4, dropout_rate=0.2):
+    def __init__(self, input_dim=768, output_dim=4):
         super().__init__()
-        self.fc1 = nn.Linear(input_dim, 256)
-        self.bn1 = nn.BatchNorm1d(256)
-        self.relu1 = nn.ReLU()
-        self.dropout1 = nn.Dropout(dropout_rate)
-
-        self.fc2 = nn.Linear(256, 128)
-        self.bn2 = nn.BatchNorm1d(128)
-        self.relu2 = nn.ReLU()
-        self.dropout2 = nn.Dropout(dropout_rate)
-
-        self.fc3 = nn.Linear(128, output_dim)
-        self.sigmoid = nn.Sigmoid()  # Scale output via sigmoid
+        self.norm = nn.LayerNorm(input_dim)
+        self.fc = nn.Linear(input_dim, output_dim)
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = self.bn1(x)
-        x = self.relu1(x)
-        x = self.dropout1(x)
-
-        x = self.fc2(x)
-        x = self.bn2(x)
-        x = self.relu2(x)
-        x = self.dropout2(x)
-
-        x = self.fc3(x)
+        x = self.norm(x)
+        x = self.fc(x)
         x = self.sigmoid(x) * 2  # Scale output to [0, 2]
         return x
-
 
 class SemanticFrontEnd:
     """
