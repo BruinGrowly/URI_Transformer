@@ -46,6 +46,11 @@ def demonstrate():
         print(f"    Context (J):       Primary Domain: '{result.context.primary_domain.value}', Validated by TruthSense: {result.context.is_valid}")
         print(f"    Execution (P):     {result.execution.description}")
 
+        print(f"\n  Metrics:")
+        print(f"    Harmony Index: {result.harmony_index:.2f}")
+        print(f"    Semantic Integrity: {result.semantic_integrity:.2f}")
+        print(f"    Deception Score: {result.deception_score:.2f}")
+
         print(f"\n  Final Generative Output:")
         print(f"    '{result.final_output}'")
         print("--------------------------")

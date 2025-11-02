@@ -2,7 +2,7 @@
 
 ## Overview
 
-The TruthSense Transformer is a hybrid semantic alignment engine that combines the power of pre-trained language models with a principled, 4-dimensional semantic space. This architecture is designed to move beyond statistical pattern matching and toward a deeper, more nuanced understanding of meaning.
+The TruthSense Transformer is a hybrid semantic alignment engine built upon the **Universal System Physics Framework**. It combines the power of pre-trained language models with a principled, 4-dimensional semantic space (LJWP) to move beyond statistical pattern matching and toward a deeper, more nuanced understanding of meaning.
 
 ## Core Architecture Components
 

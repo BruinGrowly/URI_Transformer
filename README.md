@@ -4,7 +4,7 @@
 [![Architecture: Hybrid Semantic ICE](https://img.shields.io/badge/Architecture-Hybrid%20Semantic%20ICE-purple.svg)](https://github.com/BruinGrowly/URI_Transformer)
 [![Engine: Phi--Geometric](https://img.shields.io/badge/Engine-Phi--Geometric-gold.svg)](https://github.com/BruinGrowly/URI_Transformer)
 
-The **URI-Transformer** is a revolutionary **semantic alignment engine** that moves beyond statistical pattern matching to a deeper, principled understanding of meaning. It leverages a unique, layered **ICE Framework** (Intent-Context-Execution) built upon a 4-dimensional mathematical space to analyze text and generate meaningful, context-aware responses.
+The **URI-Transformer** is a revolutionary **semantic alignment engine** that moves beyond statistical pattern matching to a deeper, principled understanding of meaning. It is built upon the **Universal System Physics Framework**, a unified mathematical framework that spans spiritual, consciousness, quantum, and physical domains through a 4D LJWP coordinate system.
 
 This version marks a major evolution, replacing the simple lexical front-end with a sophisticated **hybrid model** that combines the power of pre-trained language models with our unique, principled architecture.
 

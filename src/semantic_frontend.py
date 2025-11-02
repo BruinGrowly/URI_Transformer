@@ -27,7 +27,7 @@ class ProjectionHead(nn.Module):
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(dropout_rate)
         self.fc2 = nn.Linear(128, output_dim)
-        self.sigmoid = nn.Sigmoid()  # To ensure output is in [0, 1]
+        self.sigmoid = nn.Sigmoid()  # Scale output via sigmoid
 
     def forward(self, x):
         x = self.fc1(x)
@@ -35,7 +35,7 @@ class ProjectionHead(nn.Module):
         x = self.relu(x)
         x = self.dropout(x)
         x = self.fc2(x)
-        x = self.sigmoid(x)
+        x = self.sigmoid(x) * 2  # Scale output to [0, 2]
         return x
 
 

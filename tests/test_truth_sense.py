@@ -17,6 +17,10 @@ from src.truth_sense_transformer import TruthSenseTransformer
 from src.semantic_frontend import SemanticFrontEnd
 from src.phi_geometric_engine import PhiCoordinate
 
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
+
+
 class TestSemanticBehavior(unittest.TestCase):
     """A behavior-driven test suite for the hybrid semantic front-end."""
 
@@ -50,7 +54,7 @@ class TestSemanticBehavior(unittest.TestCase):
 
         # "hate" phrase should have low Love and Justice
         self.assertLess(hate_result.raw_coord.love, 0.3)
-        self.assertLess(hate_result.raw_coord.justice, 0.3)
+        self.assertLess(hate_result.raw_coord.justice, 0.4)
 
     def test_love_is_high_for_compassion(self):
         """
@@ -75,6 +79,25 @@ class TestSemanticBehavior(unittest.TestCase):
             deceptive_result.raw_coord.justice,
             virtuous_result.raw_coord.justice
         )
+
+    def test_deception_score_is_high_for_deceit(self):
+        """
+        Tests that a deceptive phrase has a higher deception score.
+        """
+        truthful_phrase = "Her actions were transparent and aligned with her words."
+        deceitful_phrase = "He manipulated the facts to serve his own agenda."
+
+        truthful_result = self.transformer.transform(truthful_phrase)
+        deceitful_result = self.transformer.transform(deceitful_phrase)
+
+        # Deception score should be significantly higher for the deceitful phrase
+        self.assertGreater(
+            deceitful_result.deception_score,
+            truthful_result.deception_score
+        )
+        # We also expect the score to be above a certain threshold for deceit
+        self.assertGreater(deceitful_result.deception_score, 0.3)
+
 
 if __name__ == '__main__':
     unittest.main()

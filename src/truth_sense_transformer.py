@@ -9,7 +9,7 @@ structured objects and leveraging the evolved foundational frameworks.
 
 import numpy as np
 from src.phi_geometric_engine import (
-    PhiCoordinate, GoldenSpiral, PhiExponentialBinner
+    PhiCoordinate, GoldenSpiral, PhiExponentialBinner, calculate_harmony_index
 )
 from src.frameworks import (
     QLAEFramework, GODFramework
@@ -50,42 +50,39 @@ class TruthSenseTransformer:
         anchor_dist = self.phi_engine["spiral"].distance(
             raw_coord, self.anchor_point
         )
-        align_strength = 1 / (1 + anchor_dist)
+        harmony_index = calculate_harmony_index(anchor_dist)
 
         love = raw_coord.love + (
             self.anchor_point.love - raw_coord.love
-        ) * align_strength
+        ) * harmony_index
         justice = raw_coord.justice + (
             self.anchor_point.justice - raw_coord.justice
-        ) * align_strength
+        ) * harmony_index
         power = raw_coord.power + (
             self.anchor_point.power - raw_coord.power
-        ) * align_strength
+        ) * harmony_index
         wisdom = raw_coord.wisdom + (
             self.anchor_point.wisdom - raw_coord.wisdom
-        ) * align_strength
+        ) * harmony_index
         aligned_coord = PhiCoordinate(love, justice, power, wisdom)
 
         # 3. Process through Deep ICE Framework
-        # INTENT (L+W)
+        # INTENT (Spiritual Domain)
+        guiding_principles = [(
+            "Guided by wisdom and understanding "
+            f"(W: {aligned_coord.wisdom:.2f})"
+        )]
         intent = Intent(
-            purpose=(
-                "To act with benevolent purpose "
-                f"(Love: {aligned_coord.love:.2f})"
-            ),
-            guiding_principles=[
-                "Guided by wisdom and "
-                f"understanding (Wisdom: {aligned_coord.wisdom:.2f})"
-            ]
+            purpose=f"Benevolent purpose (L: {aligned_coord.love:.2f})",
+            guiding_principles=guiding_principles
         )
 
-        # CONTEXT (J)
+        # CONTEXT (Consciousness Domain)
         context = self.frameworks["qlae"].get_context(aligned_coord)
-        # Justice as moderator
-        truth_sense_validation = aligned_coord.justice > 0.5
+        truth_sense_validation = aligned_coord.justice > 1.0  # Use 1.0 as threshold
         context.is_valid = truth_sense_validation
 
-        # EXECUTION (P)
+        # EXECUTION (Physical Domain)
         execution = self.frameworks["god"].generate_plan(
             aligned_coord.power, aligned_coord
         )
@@ -104,7 +101,12 @@ class TruthSenseTransformer:
         )
         semantic_integrity = 1.0 if original_bin == aligned_bin else 0.9
 
-        # 6. Result Compilation
+        # 6. Deception Detection (TruthSense)
+        deception_score = self.calculate_deception_score(
+            aligned_coord.justice
+        )
+
+        # 7. Result Compilation
         return TruthSenseResult(
             raw_coord=raw_coord,
             aligned_coord=aligned_coord,
@@ -113,6 +115,25 @@ class TruthSenseTransformer:
             execution=execution,
             final_output=final_output,
             anchor_distance=anchor_dist,
+            harmony_index=harmony_index,
             semantic_integrity=semantic_integrity,
-            truth_sense_validation=truth_sense_validation
+            truth_sense_validation=truth_sense_validation,
+            deception_score=deception_score,
         )
+
+    def calculate_deception_score(self, justice_score: float) -> float:
+        """
+        Calculates the deception score based on the Justice dimension.
+
+        Deception is indicated by a low Justice score. A score below 1.0
+        is considered deceptive. The score is inverted to fit the [0, 2]
+        range, where a higher score means more deceptive.
+
+        Returns:
+            A float between 0.0 (no deception) and 2.0 (maximum deception).
+        """
+        if justice_score >= 1.0:
+            return 0.0
+        else:
+            # Invert and scale the score
+            return 2.0 * (1.0 - justice_score)
