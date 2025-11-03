@@ -36,10 +36,10 @@ def demonstrate():
         result = transformer.transform(phrase)
 
         print(f"\n--- Analysis #{i+1} ---")
-        print(f"Input: '{phrase}'")
-        print(f"\n  Final Narrative Output:")
+        print(f"Input: '{phrase}'\n")
+        # The final output is now a multi-line, formatted string
         print(result.final_output)
-        print("--------------------------")
+        print("\n--------------------------")
 
 if __name__ == "__main__":
     demonstrate()

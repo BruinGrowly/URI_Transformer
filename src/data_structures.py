@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict
 from src.phi_geometric_engine import PhiCoordinate
 from enum import Enum
+from src.knowledge_graph import Principle
 
 
 class QLAEDomain(Enum):
@@ -82,6 +83,13 @@ class Trajectory:
     velocity: PhiCoordinate
     acceleration: float
 
+
+@dataclass
+class Trajectory:
+    """Represents the semantic trajectory between two coordinates."""
+    velocity: PhiCoordinate
+    acceleration: float
+
 @dataclass
 class Trajectory:
     """Represents the semantic trajectory between two coordinates."""
@@ -102,5 +110,5 @@ class TruthSenseResult:
     semantic_integrity: float
     truth_sense_validation: bool
     deception_score: float
-    foundational_principle: str
+    foundational_principle: Principle
     trajectory: Trajectory

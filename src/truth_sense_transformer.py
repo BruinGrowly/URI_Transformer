@@ -83,7 +83,7 @@ class TruthSenseTransformer:
             semantic_integrity=semantic_integrity,
             truth_sense_validation=truth_sense_validation,
             deception_score=deception_score,
-            foundational_principle=foundational_principle.name,
+            foundational_principle=foundational_principle,
             trajectory=Trajectory(
                 velocity=velocity, acceleration=acceleration),
         )
