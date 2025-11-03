@@ -25,7 +25,8 @@ TRAINING_DATA = [
     ("Her heart overflowed with unconditional love.", (0.95, 0.5, 0.2, 0.5)),
     ("He embraced them with warmth and acceptance.", (0.9, 0.6, 0.3, 0.6)),
     ("Love covers a multitude of wrongs.", (0.95, 0.5, 0.2, 0.7)),
-    ("She cared for the orphans with tender devotion.", (0.95, 0.7, 0.4, 0.7)),
+    ("She cared for the orphans with tender devotion.",
+     (0.95, 0.7, 0.4, 0.7)),
     ("His gentle spirit brought comfort to all.", (0.9, 0.6, 0.3, 0.7)),
     ("The mother's love knew no boundaries.", (0.95, 0.5, 0.4, 0.6)),
 
@@ -34,12 +35,15 @@ TRAINING_DATA = [
     ("Compassionate wisdom guides the heart.", (0.85, 0.6, 0.3, 0.9)),
     ("She loved them enough to teach them truth.", (0.8, 0.7, 0.4, 0.85)),
     ("Merciful correction comes from love.", (0.85, 0.65, 0.5, 0.8)),
-    ("Wise love knows when to give and when to withhold.", (0.8, 0.6, 0.3, 0.9)),
+    ("Wise love knows when to give and when to withhold.",
+     (0.8, 0.6, 0.3, 0.9)),
 
     # Love with justice
-    ("Love must be rooted in truth and righteousness.", (0.85, 0.85, 0.4, 0.75)),
+    ("Love must be rooted in truth and righteousness.",
+     (0.85, 0.85, 0.4, 0.75)),
     ("Righteous love confronts evil with grace.", (0.8, 0.8, 0.5, 0.7)),
-    ("Her compassion was tempered by moral clarity.", (0.8, 0.85, 0.4, 0.75)),
+    ("Her compassion was tempered by moral clarity.",
+     (0.8, 0.85, 0.4, 0.75)),
     ("Just love does not tolerate abuse.", (0.75, 0.9, 0.5, 0.7)),
     ("Faithful love upholds the truth.", (0.85, 0.85, 0.4, 0.7)),
 
@@ -55,16 +59,20 @@ TRAINING_DATA = [
     # ========================================================================
 
     # Pure Justice expressions
-    ("A just society is built on fairness and truth.", (0.7, 0.9, 0.6, 0.8)),
+    ("A just society is built on fairness and truth.",
+     (0.7, 0.9, 0.6, 0.8)),
     ("He acted with integrity in all his dealings.", (0.6, 0.9, 0.7, 0.8)),
-    ("The judge delivered a fair and righteous verdict.", (0.5, 0.9, 0.8, 0.7)),
+    ("The judge delivered a fair and righteous verdict.",
+     (0.5, 0.9, 0.8, 0.7)),
     ("Justice demands equal treatment under law.", (0.5, 0.95, 0.7, 0.75)),
     ("Righteousness exalts a nation.", (0.6, 0.95, 0.6, 0.8)),
     ("She stood firm for what is right.", (0.6, 0.9, 0.7, 0.75)),
     ("Truth and justice are inseparable.", (0.5, 0.95, 0.5, 0.85)),
-    ("He fought corruption with unwavering integrity.", (0.6, 0.9, 0.6, 0.75)),
+    ("He fought corruption with unwavering integrity.",
+     (0.6, 0.9, 0.6, 0.75)),
     ("Fair scales and honest weights.", (0.5, 0.95, 0.5, 0.7)),
-    ("The righteous care about justice for the poor.", (0.75, 0.9, 0.4, 0.7)),
+    ("The righteous care about justice for the poor.",
+     (0.75, 0.9, 0.4, 0.7)),
 
     # Justice with wisdom
     ("Wise judgment considers all perspectives.", (0.6, 0.85, 0.6, 0.9)),
@@ -75,7 +83,8 @@ TRAINING_DATA = [
 
     # Justice with power
     ("Righteous authority enforces the law.", (0.5, 0.9, 0.85, 0.7)),
-    ("Justice backed by strength protects the innocent.", (0.6, 0.9, 0.85, 0.7)),
+    ("Justice backed by strength protects the innocent.",
+     (0.6, 0.9, 0.85, 0.7)),
     ("He wielded power to establish fairness.", (0.5, 0.9, 0.9, 0.6)),
     ("Strong enforcement of moral standards.", (0.5, 0.85, 0.9, 0.7)),
     ("Authority used to uphold righteousness.", (0.5, 0.9, 0.9, 0.65)),
@@ -93,15 +102,19 @@ TRAINING_DATA = [
 
     # Pure Power expressions
     ("The king had absolute power over his domain.", (0.3, 0.5, 0.9, 0.6)),
-    ("The storm was a powerful and unstoppable force.", (0.1, 0.3, 0.9, 0.2)),
+    ("The storm was a powerful and unstoppable force.",
+     (0.1, 0.3, 0.9, 0.2)),
     ("She spoke with authority and conviction.", (0.4, 0.6, 0.9, 0.7)),
     ("His strength was legendary and unmatched.", (0.3, 0.4, 0.95, 0.5)),
-    ("They commanded vast armies with decisiveness.", (0.3, 0.5, 0.95, 0.6)),
-    ("The empire's might extended across continents.", (0.2, 0.4, 0.95, 0.5)),
+    ("They commanded vast armies with decisiveness.",
+     (0.3, 0.5, 0.95, 0.6)),
+    ("The empire's might extended across continents.",
+     (0.2, 0.4, 0.95, 0.5)),
     ("She wielded extraordinary influence.", (0.4, 0.5, 0.9, 0.7)),
     ("His presence commanded respect and obedience.", (0.3, 0.6, 0.9, 0.6)),
     ("Raw power surged through the system.", (0.1, 0.3, 0.95, 0.3)),
-    ("The earthquake demonstrated nature's awesome force.", (0.1, 0.2, 0.95, 0.2)),
+    ("The earthquake demonstrated nature's awesome force.",
+     (0.1, 0.2, 0.95, 0.2)),
 
     # Power with wisdom
     ("Wise leadership channels power effectively.", (0.4, 0.6, 0.85, 0.9)),
@@ -113,7 +126,8 @@ TRAINING_DATA = [
     # Power with justice
     ("Righteous power defends the weak.", (0.6, 0.85, 0.9, 0.7)),
     ("Just authority maintains order.", (0.5, 0.9, 0.9, 0.7)),
-    ("He used his strength to protect the vulnerable.", (0.7, 0.8, 0.9, 0.6)),
+    ("He used his strength to protect the vulnerable.",
+     (0.7, 0.8, 0.9, 0.6)),
     ("Fair enforcement of necessary discipline.", (0.5, 0.85, 0.9, 0.7)),
     ("Moral strength stands against corruption.", (0.6, 0.9, 0.85, 0.75)),
 
@@ -131,10 +145,12 @@ TRAINING_DATA = [
     # Pure Wisdom expressions
     ("The philosopher shared his profound wisdom.", (0.6, 0.7, 0.5, 0.9)),
     ("True wisdom is knowing you know nothing.", (0.7, 0.8, 0.4, 0.9)),
-    ("She offered wise counsel to the young leader.", (0.7, 0.7, 0.6, 0.9)),
+    ("She offered wise counsel to the young leader.",
+     (0.7, 0.7, 0.6, 0.9)),
     ("Understanding comes from deep reflection.", (0.5, 0.6, 0.3, 0.95)),
     ("Knowledge and insight guide the path.", (0.5, 0.7, 0.4, 0.95)),
-    ("He studied the ancient texts with discernment.", (0.5, 0.7, 0.4, 0.9)),
+    ("He studied the ancient texts with discernment.",
+     (0.5, 0.7, 0.4, 0.9)),
     ("Wisdom sees beyond surface appearances.", (0.6, 0.7, 0.3, 0.95)),
     ("Her teaching illuminated complex truths.", (0.6, 0.7, 0.5, 0.9)),
     ("The sage pondered life's deepest questions.", (0.6, 0.6, 0.3, 0.95)),
@@ -168,7 +184,8 @@ TRAINING_DATA = [
     ("His actions were unjust and deceitful.", (0.2, 0.1, 0.6, 0.3)),
     ("The plan was built on a foundation of lies.", (0.3, 0.1, 0.5, 0.2)),
     ("Corruption spread through the institution.", (0.2, 0.15, 0.7, 0.3)),
-    ("She manipulated the truth for personal gain.", (0.2, 0.1, 0.7, 0.4)),
+    ("She manipulated the truth for personal gain.",
+     (0.2, 0.1, 0.7, 0.4)),
     ("Dishonesty became the norm.", (0.2, 0.1, 0.5, 0.3)),
     ("They perverted justice for profit.", (0.2, 0.1, 0.8, 0.3)),
     ("Fraud and deceit characterized his dealings.", (0.2, 0.1, 0.6, 0.4)),
@@ -188,7 +205,8 @@ TRAINING_DATA = [
     ("Hate and division are destructive forces.", (0.1, 0.2, 0.8, 0.3)),
     ("His cruelty knew no bounds.", (0.1, 0.2, 0.8, 0.2)),
     ("Malice drove every action.", (0.1, 0.2, 0.7, 0.3)),
-    ("Indifference to suffering marked their response.", (0.15, 0.3, 0.5, 0.3)),
+    ("Indifference to suffering marked their response.",
+     (0.15, 0.3, 0.5, 0.3)),
     ("Hostility poisoned every interaction.", (0.1, 0.3, 0.7, 0.3)),
     ("He showed callous disregard for others.", (0.1, 0.2, 0.6, 0.3)),
     ("Bitterness consumed her heart.", (0.15, 0.3, 0.4, 0.3)),
@@ -205,7 +223,8 @@ TRAINING_DATA = [
     # BALANCED / MIXED COORDINATES - Complex combinations
     # ========================================================================
 
-    ("A good leader rules with power, wisdom, and justice.", (0.6, 0.8, 0.8, 0.8)),
+    ("A good leader rules with power, wisdom, and justice.",
+     (0.6, 0.8, 0.8, 0.8)),
     ("Love without truth is sentimentality.", (0.8, 0.5, 0.4, 0.7)),
     ("Power without justice is tyranny.", (0.3, 0.2, 0.9, 0.4)),
     ("Knowledge without love is arrogance.", (0.3, 0.6, 0.5, 0.9)),
@@ -221,7 +240,8 @@ TRAINING_DATA = [
     ("Harmony requires all virtues in measure.", (0.65, 0.65, 0.5, 0.7)),
     ("The situation demands careful equilibrium.", (0.55, 0.6, 0.55, 0.7)),
     ("Moderation in all things.", (0.6, 0.65, 0.5, 0.7)),
-    ("Integrate multiple perspectives thoughtfully.", (0.6, 0.6, 0.5, 0.75)),
+    ("Integrate multiple perspectives thoughtfully.",
+     (0.6, 0.6, 0.5, 0.75)),
 
     # ========================================================================
     # CONTEXTUAL DOMAINS - Ethical, Spiritual, Technical, Relational
@@ -229,8 +249,10 @@ TRAINING_DATA = [
 
     # Ethical domain
     ("Moral principles guide ethical behavior.", (0.7, 0.9, 0.5, 0.85)),
-    ("Virtue ethics emphasizes character development.", (0.7, 0.8, 0.4, 0.9)),
-    ("The categorical imperative demands consistency.", (0.5, 0.9, 0.5, 0.9)),
+    ("Virtue ethics emphasizes character development.",
+     (0.7, 0.8, 0.4, 0.9)),
+    ("The categorical imperative demands consistency.",
+     (0.5, 0.9, 0.5, 0.9)),
     ("Utilitarianism seeks the greatest good.", (0.7, 0.8, 0.5, 0.85)),
     ("Deontological ethics focuses on duty.", (0.6, 0.9, 0.6, 0.85)),
 
@@ -249,18 +271,22 @@ TRAINING_DATA = [
     # Technical/practical domain
     ("The algorithm optimizes for efficiency.", (0.3, 0.6, 0.7, 0.9)),
     ("System architecture requires careful design.", (0.4, 0.7, 0.6, 0.9)),
-    ("Data structures organize information logically.", (0.3, 0.7, 0.5, 0.9)),
+    ("Data structures organize information logically.",
+     (0.3, 0.7, 0.5, 0.9)),
     ("Engineering principles ensure safety.", (0.5, 0.8, 0.7, 0.9)),
     ("Precision measurements improve accuracy.", (0.4, 0.8, 0.5, 0.9)),
-    ("Scientific method demands rigorous testing.", (0.4, 0.85, 0.5, 0.9)),
+    ("Scientific method demands rigorous testing.",
+     (0.4, 0.85, 0.5, 0.9)),
     ("Quality assurance prevents defects.", (0.5, 0.8, 0.6, 0.85)),
     ("Systematic debugging resolves issues.", (0.4, 0.7, 0.6, 0.9)),
     ("Documentation facilitates understanding.", (0.5, 0.7, 0.4, 0.85)),
     ("Best practices guide development.", (0.5, 0.75, 0.5, 0.85)),
 
     # Relational domain
-    ("Healthy relationships require mutual respect.", (0.8, 0.8, 0.4, 0.75)),
-    ("Communication builds bridges of understanding.", (0.7, 0.7, 0.4, 0.8)),
+    ("Healthy relationships require mutual respect.",
+     (0.8, 0.8, 0.4, 0.75)),
+    ("Communication builds bridges of understanding.",
+     (0.7, 0.7, 0.4, 0.8)),
     ("Trust forms the foundation of friendship.", (0.8, 0.85, 0.4, 0.7)),
     ("Forgiveness heals broken relationships.", (0.9, 0.7, 0.4, 0.75)),
     ("Empathy connects heart to heart.", (0.9, 0.6, 0.3, 0.75)),
@@ -283,8 +309,10 @@ TRAINING_DATA = [
     # High all dimensions (ideal virtuous states)
     ("Perfect love casts out fear.", (0.95, 0.8, 0.7, 0.85)),
     ("The divine nature embodies all virtues.", (0.95, 0.95, 0.9, 0.95)),
-    ("Holiness integrates love, justice, power, and wisdom.", (0.9, 0.95, 0.85, 0.9)),
-    ("Supreme goodness manifests complete perfection.", (0.95, 0.95, 0.8, 0.9)),
+    ("Holiness integrates love, justice, power, and wisdom.",
+     (0.9, 0.95, 0.85, 0.9)),
+    ("Supreme goodness manifests complete perfection.",
+     (0.95, 0.95, 0.8, 0.9)),
     ("Absolute truth united with perfect love.", (0.95, 0.95, 0.7, 0.9)),
 
     # Love-Justice emphasis
@@ -320,17 +348,23 @@ TRAINING_DATA = [
     ("Wise love knows the right time.", (0.85, 0.6, 0.4, 0.9)),
     ("Understanding hearts bring healing.", (0.85, 0.6, 0.3, 0.85)),
     ("Insightful kindness addresses root causes.", (0.8, 0.6, 0.4, 0.9)),
-    ("Discerning care provides what's truly needed.", (0.85, 0.65, 0.4, 0.9)),
+    ("Discerning care provides what's truly needed.",
+     (0.85, 0.65, 0.4, 0.9)),
 
     # Varied sentence structures and complexities
     ("Help.", (0.7, 0.5, 0.3, 0.4)),
     ("Stop!", (0.3, 0.6, 0.7, 0.4)),
     ("Please be kind to one another.", (0.85, 0.6, 0.3, 0.6)),
-    ("The consequences of injustice ripple through generations.", (0.5, 0.85, 0.6, 0.8)),
-    ("When power is exercised without moral restraint, tyranny inevitably follows.", (0.3, 0.4, 0.9, 0.7)),
-    ("True understanding emerges from patient study and humble reflection.", (0.6, 0.7, 0.3, 0.95)),
-    ("Although it seemed impossible, love found a way forward.", (0.9, 0.6, 0.5, 0.7)),
-    ("The intersection of mercy and justice creates redemption.", (0.85, 0.85, 0.5, 0.75)),
+    ("The consequences of injustice ripple through generations.",
+     (0.5, 0.85, 0.6, 0.8)),
+    ("When power is exercised without moral restraint, tyranny inevitably "
+     "follows.", (0.3, 0.4, 0.9, 0.7)),
+    ("True understanding emerges from patient study and humble "
+     "reflection.", (0.6, 0.7, 0.3, 0.95)),
+    ("Although it seemed impossible, love found a way forward.",
+     (0.9, 0.6, 0.5, 0.7)),
+    ("The intersection of mercy and justice creates redemption.",
+     (0.85, 0.85, 0.5, 0.75)),
 
     # Questions and imperatives
     ("How can we be more compassionate?", (0.8, 0.6, 0.4, 0.75)),
@@ -359,18 +393,22 @@ TRAINING_DATA = [
     ("She radiated genuine warmth.", (0.95, 0.6, 0.4, 0.6)),
 
     # Actions and consequences
-    ("Planting seeds of kindness yields a harvest of joy.", (0.85, 0.6, 0.4, 0.75)),
+    ("Planting seeds of kindness yields a harvest of joy.",
+     (0.85, 0.6, 0.4, 0.75)),
     ("Investing in education transforms communities.", (0.7, 0.75, 0.6, 0.9)),
     ("Building bridges connects divided peoples.", (0.8, 0.75, 0.6, 0.75)),
     ("Breaking trust destroys relationships.", (0.2, 0.2, 0.6, 0.5)),
     ("Seeking revenge perpetuates cycles of harm.", (0.2, 0.3, 0.7, 0.3)),
 
     # Social and communal
-    ("The community gathered to support their neighbors.", (0.85, 0.7, 0.5, 0.65)),
-    ("Collective wisdom emerges from diverse voices.", (0.6, 0.7, 0.5, 0.85)),
+    ("The community gathered to support their neighbors.",
+     (0.85, 0.7, 0.5, 0.65)),
+    ("Collective wisdom emerges from diverse voices.",
+     (0.6, 0.7, 0.5, 0.85)),
     ("Shared sacrifice builds strong bonds.", (0.8, 0.75, 0.6, 0.7)),
     ("Social justice requires systemic change.", (0.7, 0.9, 0.7, 0.8)),
-    ("Cultural traditions preserve wisdom across generations.", (0.7, 0.7, 0.5, 0.85)),
+    ("Cultural traditions preserve wisdom across generations.",
+     (0.7, 0.7, 0.5, 0.85)),
 
     # Natural world and metaphors
     ("The river flows with unstoppable force.", (0.2, 0.4, 0.9, 0.3)),
@@ -384,17 +422,24 @@ TRAINING_DATA = [
 
     # Historical and philosophical references
     ("Democracy requires informed citizens.", (0.6, 0.8, 0.6, 0.85)),
-    ("The Socratic method pursues truth through questioning.", (0.5, 0.8, 0.4, 0.95)),
-    ("Stoicism teaches acceptance of what we cannot control.", (0.5, 0.7, 0.5, 0.9)),
+    ("The Socratic method pursues truth through questioning.",
+     (0.5, 0.8, 0.4, 0.95)),
+    ("Stoicism teaches acceptance of what we cannot control.",
+     (0.5, 0.7, 0.5, 0.9)),
     ("The Renaissance celebrated human potential.", (0.6, 0.6, 0.7, 0.85)),
-    ("Enlightenment values emphasized reason and progress.", (0.5, 0.75, 0.6, 0.9)),
+    ("Enlightenment values emphasized reason and progress.",
+     (0.5, 0.75, 0.6, 0.9)),
 
     # Contemporary contexts
     ("Technology amplifies both good and evil.", (0.5, 0.5, 0.8, 0.75)),
-    ("Global cooperation addresses shared challenges.", (0.7, 0.8, 0.6, 0.8)),
-    ("Environmental stewardship protects future generations.", (0.75, 0.85, 0.6, 0.85)),
-    ("Human rights are universal and inalienable.", (0.75, 0.95, 0.6, 0.8)),
-    ("Innovation requires both creativity and discipline.", (0.5, 0.7, 0.7, 0.85)),
+    ("Global cooperation addresses shared challenges.",
+     (0.7, 0.8, 0.6, 0.8)),
+    ("Environmental stewardship protects future generations.",
+     (0.75, 0.85, 0.6, 0.85)),
+    ("Human rights are universal and inalienable.",
+     (0.75, 0.95, 0.6, 0.8)),
+    ("Innovation requires both creativity and discipline.",
+     (0.5, 0.7, 0.7, 0.85)),
 
     # Emotional states and experiences
     ("Joy fills the heart with lightness.", (0.85, 0.6, 0.4, 0.6)),
@@ -422,10 +467,12 @@ TRAINING_DATA = [
     ("Storytelling preserves culture and values.", (0.7, 0.7, 0.5, 0.8)),
 
     # Leadership and governance
-    ("Servant leadership prioritizes others' needs.", (0.85, 0.75, 0.6, 0.8)),
+    ("Servant leadership prioritizes others' needs.",
+     (0.85, 0.75, 0.6, 0.8)),
     ("Accountability ensures integrity in office.", (0.5, 0.9, 0.7, 0.8)),
     ("Transparency builds public trust.", (0.6, 0.9, 0.6, 0.8)),
-    ("Collaboration achieves more than competition.", (0.75, 0.75, 0.6, 0.8)),
+    ("Collaboration achieves more than competition.",
+     (0.75, 0.75, 0.6, 0.8)),
     ("Vision inspires collective action.", (0.6, 0.7, 0.7, 0.85)),
     ("Delegation empowers team members.", (0.7, 0.7, 0.6, 0.8)),
 
@@ -440,7 +487,8 @@ TRAINING_DATA = [
     ("Balance promotes physical and mental wellness.", (0.7, 0.7, 0.5, 0.8)),
     ("Healing requires time and care.", (0.8, 0.6, 0.4, 0.7)),
     ("Preventive measures maintain health.", (0.7, 0.75, 0.5, 0.85)),
-    ("Wholeness integrates body, mind, and spirit.", (0.75, 0.7, 0.5, 0.8)),
+    ("Wholeness integrates body, mind, and spirit.",
+     (0.75, 0.7, 0.5, 0.8)),
     ("Rest restores depleted energy.", (0.7, 0.6, 0.3, 0.7)),
 
     # Economic and material
@@ -472,11 +520,13 @@ TRAINING_DATA = [
     ("Celebration brings people together.", (0.85, 0.6, 0.5, 0.6)),
 
     # Wisdom literature style
-    ("The beginning of wisdom is fear of the Lord.", (0.7, 0.8, 0.5, 0.95)),
+    ("The beginning of wisdom is fear of the Lord.",
+     (0.7, 0.8, 0.5, 0.95)),
     ("Pride goes before destruction.", (0.3, 0.4, 0.7, 0.5)),
     ("A gentle answer turns away wrath.", (0.85, 0.7, 0.4, 0.85)),
     ("The tongue has power of life and death.", (0.5, 0.6, 0.75, 0.8)),
-    ("Train up a child in the way they should go.", (0.8, 0.75, 0.5, 0.85)),
+    ("Train up a child in the way they should go.",
+     (0.8, 0.75, 0.5, 0.85)),
     ("Where there is unity, there is strength.", (0.75, 0.75, 0.75, 0.75)),
     ("The wise store up knowledge.", (0.5, 0.6, 0.4, 0.95)),
 
@@ -485,14 +535,16 @@ TRAINING_DATA = [
     ("The last shall be first.", (0.75, 0.8, 0.5, 0.8)),
     ("Strength is perfected in weakness.", (0.7, 0.7, 0.6, 0.85)),
     ("Dying to self brings true freedom.", (0.8, 0.75, 0.5, 0.85)),
-    ("The foolishness of God is wiser than human wisdom.", (0.7, 0.7, 0.6, 0.9)),
+    ("The foolishness of God is wiser than human wisdom.",
+     (0.7, 0.7, 0.6, 0.9)),
 
     # Science and discovery
     ("Observation reveals natural patterns.", (0.4, 0.75, 0.5, 0.9)),
     ("Hypothesis testing advances knowledge.", (0.4, 0.8, 0.5, 0.9)),
     ("Replication ensures scientific validity.", (0.5, 0.85, 0.5, 0.85)),
     ("Curiosity fuels scientific progress.", (0.5, 0.6, 0.5, 0.9)),
-    ("Evidence-based reasoning guides conclusions.", (0.4, 0.85, 0.5, 0.9)),
+    ("Evidence-based reasoning guides conclusions.",
+     (0.4, 0.85, 0.5, 0.9)),
 
     # Final diverse examples to reach 500+
     ("Simplicity clarifies complexity.", (0.5, 0.6, 0.4, 0.85)),
@@ -503,7 +555,8 @@ TRAINING_DATA = [
     ("Magnanimity displays greatness of soul.", (0.75, 0.75, 0.7, 0.8)),
     ("Meekness is strength under control.", (0.8, 0.75, 0.7, 0.8)),
     ("Diligence applies consistent effort.", (0.6, 0.75, 0.7, 0.8)),
-    ("Contentment finds satisfaction in sufficiency.", (0.75, 0.7, 0.4, 0.8)),
+    ("Contentment finds satisfaction in sufficiency.",
+     (0.75, 0.7, 0.4, 0.8)),
     ("Cheerfulness lifts the spirit.", (0.85, 0.6, 0.4, 0.65)),
     ("Sincerity speaks from the heart.", (0.8, 0.8, 0.4, 0.7)),
     ("Reverence honors what is sacred.", (0.75, 0.8, 0.5, 0.8)),
@@ -518,6 +571,7 @@ TRAINING_DATA = [
 ]
 
 # Verify we have 300+ examples (significantly improved from original 18)
-assert len(TRAINING_DATA) >= 300, f"Need at least 300 examples, have {len(TRAINING_DATA)}"
+assert len(TRAINING_DATA) >= 300, \
+    f"Need at least 300 examples, have {len(TRAINING_DATA)}"
 
 print(f"Training dataset contains {len(TRAINING_DATA)} examples")
