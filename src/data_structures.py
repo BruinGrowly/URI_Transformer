@@ -40,6 +40,34 @@ class ExecutionPlan:
     magnitude: float
     description: str
 
+class QLAEDomain(Enum):
+    ICE = "Consciousness"
+    SFM = "Matter"
+    IPE = "Life"
+    PFE = "Energy"
+    STM = "Information"
+    PTD = "Space-Time"
+    CCC = "Relationship"
+
+@dataclass
+class QLAEContext:
+    """A structured context object from the QLAE framework."""
+    domains: Dict[QLAEDomain, float]
+    primary_domain: QLAEDomain
+    is_valid: bool = True
+
+class ExecutionStrategy(Enum):
+    COMPASSIONATE_ACTION = "Compassionate Action"
+    AUTHORITATIVE_COMMAND = "Authoritative Command"
+    INSTRUCTIVE_GUIDANCE = "Instructive Guidance"
+    CORRECTIVE_JUDGMENT = "Corrective Judgment"
+
+@dataclass
+class ExecutionPlan:
+    """A structured plan for the Execution stage."""
+    strategy: ExecutionStrategy
+    magnitude: float
+    description: str
 
 @dataclass
 class Intent:
@@ -54,6 +82,11 @@ class Trajectory:
     velocity: PhiCoordinate
     acceleration: float
 
+@dataclass
+class Trajectory:
+    """Represents the semantic trajectory between two coordinates."""
+    velocity: PhiCoordinate
+    acceleration: float
 
 @dataclass
 class TruthSenseResult:
