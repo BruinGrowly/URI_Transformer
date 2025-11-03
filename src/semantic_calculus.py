@@ -5,7 +5,10 @@ Semantic Calculus
 from src.phi_geometric_engine import PhiCoordinate
 import numpy as np
 
-def calculate_trajectory(coord1: PhiCoordinate, coord2: PhiCoordinate) -> tuple:
+
+def calculate_trajectory(
+    coord1: PhiCoordinate, coord2: PhiCoordinate
+) -> tuple:
     """
     Calculates the semantic trajectory between two coordinates.
 

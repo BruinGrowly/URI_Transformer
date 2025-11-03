@@ -5,6 +5,7 @@ Phi Geometric Engine
 import numpy as np
 from dataclasses import dataclass
 
+
 @dataclass
 class PhiCoordinate:
     """A 4D coordinate in the semantic space."""
@@ -25,9 +26,11 @@ class PhiCoordinate:
             self.wisdom - other.wisdom,
         )
 
+
 def calculate_harmony_index(anchor_distance: float) -> float:
     """Calculates the harmony index from the anchor distance."""
     return 1 / (1 + anchor_distance)
+
 
 class GoldenSpiral:
     """Calculates the natural distance between concepts in 4D space."""

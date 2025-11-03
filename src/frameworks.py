@@ -10,6 +10,7 @@ from src.data_structures import (
 )
 from src.phi_geometric_engine import PhiCoordinate
 
+
 class QLAEFramework:
     """QLAE model for deep contextual analysis."""
     def get_context(self, coord: PhiCoordinate) -> QLAEContext:
@@ -33,6 +34,7 @@ class QLAEFramework:
         return QLAEContext(
             domains=sorted_domains, primary_domain=primary_domain
         )
+
 
 class GODFramework:
     """GOD framework to generate a detailed ExecutionPlan."""

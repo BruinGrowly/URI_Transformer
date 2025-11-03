@@ -2,7 +2,6 @@
 TruthSense Transformer
 """
 
-import numpy as np
 from src.phi_geometric_engine import (
     PhiCoordinate,
     GoldenSpiral,
@@ -14,6 +13,7 @@ from src.data_structures import Intent, TruthSenseResult, Trajectory
 from src.semantic_frontend import SemanticFrontEnd
 from src.knowledge_graph import KnowledgeGraph
 from src.semantic_calculus import calculate_trajectory
+
 
 class TruthSenseTransformer:
     """The main transformer class."""
@@ -37,15 +37,21 @@ class TruthSenseTransformer:
         )
         harmony_index = calculate_harmony_index(anchor_dist)
 
-        love = raw_coord.love + (self.anchor_point.love - raw_coord.love) * harmony_index
-        justice = raw_coord.justice + (self.anchor_point.justice - raw_coord.justice) * harmony_index
-        power = raw_coord.power + (self.anchor_point.power - raw_coord.power) * harmony_index
-        wisdom = raw_coord.wisdom + (self.anchor_point.wisdom - raw_coord.wisdom) * harmony_index
+        love = raw_coord.love + (self.anchor_point.love - raw_coord.love) \
+            * harmony_index
+        justice = raw_coord.justice + \
+            (self.anchor_point.justice - raw_coord.justice) * harmony_index
+        power = raw_coord.power + (self.anchor_point.power - raw_coord.power) \
+            * harmony_index
+        wisdom = raw_coord.wisdom + \
+            (self.anchor_point.wisdom - raw_coord.wisdom) * harmony_index
         aligned_coord = PhiCoordinate(love, justice, power, wisdom)
 
         intent = Intent(
-            purpose=f"To act with benevolent purpose (Love: {aligned_coord.love:.2f})",
-            guiding_principles=[f"Guided by wisdom (Wisdom: {aligned_coord.wisdom:.2f})"]
+            purpose="To act with benevolent purpose "
+                    f"(Love: {aligned_coord.love:.2f})",
+            guiding_principles=["Guided by wisdom "
+                                f"(Wisdom: {aligned_coord.wisdom:.2f})"]
         )
 
         context = self.frameworks["qlae"].get_context(aligned_coord)
@@ -60,7 +66,8 @@ class TruthSenseTransformer:
 
         deception_score = self.calculate_deception_score(aligned_coord.justice)
 
-        foundational_principle = self.knowledge_graph.find_closest_principle(aligned_coord)
+        foundational_principle = self.knowledge_graph.find_closest_principle(
+            aligned_coord)
 
         velocity, acceleration = calculate_trajectory(raw_coord, aligned_coord)
 
@@ -77,7 +84,8 @@ class TruthSenseTransformer:
             truth_sense_validation=truth_sense_validation,
             deception_score=deception_score,
             foundational_principle=foundational_principle.name,
-            trajectory=Trajectory(velocity=velocity, acceleration=acceleration),
+            trajectory=Trajectory(
+                velocity=velocity, acceleration=acceleration),
         )
 
         result.final_output = self.output_generator.synthesize_output(result)
