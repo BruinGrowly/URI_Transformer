@@ -1,38 +1,18 @@
 """
-Core Conceptual Frameworks (Evolved)
-=====================================
-
-Implements the evolved conceptual models for the TruthSense Transformer.
-These frameworks now produce richer, structured outputs for a deeper
-and more integrated ICE pipeline.
+Core Conceptual Frameworks
 """
 
-from enum import Enum
-from dataclasses import dataclass
-from typing import Dict
+from src.data_structures import (
+    QLAEContext,
+    QLAEDomain,
+    ExecutionPlan,
+    ExecutionStrategy
+)
 from src.phi_geometric_engine import PhiCoordinate
 
 
-class QLAEDomain(Enum):
-    ICE = "Consciousness"
-    SFM = "Matter"
-    IPE = "Life"
-    PFE = "Energy"
-    STM = "Information"
-    PTD = "Space-Time"
-    CCC = "Relationship"
-
-
-@dataclass
-class QLAEContext:
-    """A structured context object from the QLAE framework."""
-    domains: Dict[QLAEDomain, float]
-    primary_domain: QLAEDomain
-    is_valid: bool = True
-
-
 class QLAEFramework:
-    """Evolved QLAE model for deep contextual analysis."""
+    """QLAE model for deep contextual analysis."""
     def get_context(self, coord: PhiCoordinate) -> QLAEContext:
         """Provides a structured, weighted contextual analysis."""
         scores = {
@@ -56,23 +36,8 @@ class QLAEFramework:
         )
 
 
-class ExecutionStrategy(Enum):
-    COMPASSIONATE_ACTION = "Compassionate Action"
-    AUTHORITATIVE_COMMAND = "Authoritative Command"
-    INSTRUCTIVE_GUIDANCE = "Instructive Guidance"
-    CORRECTIVE_JUDGMENT = "Corrective Judgment"
-
-
-@dataclass
-class ExecutionPlan:
-    """A structured plan for the Execution stage."""
-    strategy: ExecutionStrategy
-    magnitude: float  # The power/feasibility of the plan
-    description: str
-
-
 class GODFramework:
-    """Evolved GOD framework to generate a detailed ExecutionPlan."""
+    """GOD framework to generate a detailed ExecutionPlan."""
     def generate_plan(
         self, power_score: float, intent_coord: PhiCoordinate
     ) -> ExecutionPlan:
