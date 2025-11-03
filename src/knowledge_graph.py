@@ -24,6 +24,7 @@ class KnowledgeGraph:
     def _initialize_graph(self):
         """Populates the graph with a set of foundational principles."""
         self.principles.extend([
+            # Core Principles
             Principle("Benevolent Love",
                       "The principle of selfless, unconditional care.",
                       PhiCoordinate(1.8, 1.4, 1.0, 1.6)),
@@ -37,6 +38,38 @@ class KnowledgeGraph:
                 "Discerning Wisdom",
                 "The principle of knowledge, understanding, and insight.",
                 PhiCoordinate(1.6, 1.6, 1.4, 1.8)
+            ),
+
+            # New, nuanced principles
+            Principle(
+                "Compassionate Justice",
+                "The principle of applying fairness and moral order with "
+                "empathy and a desire to heal.",
+                PhiCoordinate(1.7, 1.7, 1.3, 1.5)
+            ),
+            Principle(
+                "Strategic Power",
+                "The principle of applying strength and authority with "
+                "foresight, planning, and understanding.",
+                PhiCoordinate(1.3, 1.5, 1.7, 1.7)
+            ),
+            Principle(
+                "Creative Expression",
+                "The principle of bringing new ideas and beauty into "
+                "existence through skill and imagination.",
+                PhiCoordinate(1.7, 1.4, 1.4, 1.7)
+            ),
+            Principle(
+                "Unwavering Integrity",
+                "The principle of steadfast adherence to moral and ethical "
+                "truths, even in the face of opposition.",
+                PhiCoordinate(1.4, 1.8, 1.5, 1.7)
+            ),
+            Principle(
+                "Servant Leadership",
+                "The principle of leading by empowering and serving others, "
+                "rather than commanding them.",
+                PhiCoordinate(1.8, 1.5, 1.4, 1.7)
             ),
         ])
 

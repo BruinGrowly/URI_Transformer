@@ -27,7 +27,8 @@ def demonstrate():
         "A good leader rules with power, wisdom, and justice.",
         "His actions were unjust and deceitful.",
         "True wisdom is knowing you know nothing.",
-        "Love without truth is sentimentality."
+        "Love without truth is sentimentality.",
+        "Effective leadership requires empowering and serving others."
     ]
 
     print("--- TruthSense Transformer Demonstration ---")

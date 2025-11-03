@@ -29,5 +29,15 @@ class TestKnowledgeGraph(unittest.TestCase):
         principle2 = self.kg.find_closest_principle(coord2)
         self.assertEqual(principle2.name, "Discerning Wisdom")
 
+    def test_find_closest_nuanced_principle(self):
+        """
+        Tests that the knowledge graph can find the closest principle
+        among the new, more nuanced principles.
+        """
+        # A coordinate that is very close to "Servant Leadership"
+        coord = PhiCoordinate(1.8, 1.5, 1.4, 1.7)
+        principle = self.kg.find_closest_principle(coord)
+        self.assertEqual(principle.name, "Servant Leadership")
+
 if __name__ == '__main__':
     unittest.main()
