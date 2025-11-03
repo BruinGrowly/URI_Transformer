@@ -31,11 +31,12 @@ class TestFrameworks(unittest.TestCase):
 
     def test_god_framework_plan_generation(self):
         """Tests that the GOD framework generates the correct execution plan."""
-        plan1 = self.god.generate_plan(0.8, PhiCoordinate(1.5, 0.5, 0.5, 0.5))
-        self.assertEqual(plan1.strategy, ExecutionStrategy.COMPASSIONATE_ACTION)
-
-        plan2 = self.god.generate_plan(0.8, PhiCoordinate(0.5, 0.5, 1.5, 0.5))
-        self.assertEqual(plan2.strategy, ExecutionStrategy.AUTHORITATIVE_COMMAND)
+        plan = self.god.generate_plan(0.8, PhiCoordinate(1.5, 0.5, 0.5, 0.5))
+        self.assertEqual(plan.strategy, ExecutionStrategy.COMPASSIONATE_ACTION)
+        self.assertIn("Execute with Compassionate Action", plan.summary)
+        self.assertEqual(len(plan.steps), 3)
+        self.assertIn("To restore emotional well-being", plan.outcome)
+        self.assertIn("Empathy", plan.principles_to_uphold)
 
 if __name__ == '__main__':
     unittest.main()

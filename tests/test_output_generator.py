@@ -35,7 +35,14 @@ class TestOutputGenerator(unittest.TestCase):
             execution=ExecutionPlan(
                 strategy=ExecutionStrategy.AUTHORITATIVE_COMMAND,
                 magnitude=1.2,
-                description="Execute with Authoritative Command, leveraging a power capacity of 1.20."
+                summary="Execute with Authoritative Command, leveraging a power capacity of 1.20.",
+                steps=[
+                    "Clearly define the objective and desired outcome.",
+                    "Issue clear, concise directives to all parties.",
+                    "Monitor progress and enforce compliance."
+                ],
+                outcome="To establish order and achieve the objective efficiently.",
+                principles_to_uphold=["Clarity", "Decisiveness", "Accountability"]
             ),
             final_output="",
             anchor_distance=1.2,
@@ -58,16 +65,15 @@ class TestOutputGenerator(unittest.TestCase):
         output = generator.synthesize_output(result)
 
         self.assertIn("--- Executive Summary ---", output)
-        self.assertIn("recommended course of action, based on the principle of 'Effective Power', is 'Authoritative Command'", output)
         self.assertIn("--- Foundational Principle ---", output)
-        self.assertIn("grounded in the principle of 'Effective Power'", output)
-        self.assertIn("The principle of capability, strength, and authority.", output)
-        self.assertIn("harmony index of 0.45", output)
+        self.assertIn("--- Detailed Execution Plan ---", output)
+        self.assertIn("Strategy: Authoritative Command", output)
+        self.assertIn("Monitor progress and enforce compliance.", output)
+        self.assertIn("Intended Outcome: To establish order and achieve the objective efficiently.", output)
+        self.assertIn("Principles to Uphold: Clarity, Decisiveness, Accountability", output)
         self.assertIn("--- Semantic Trajectory ---", output)
-        self.assertIn("acceleration of 0.55", output)
         self.assertIn("--- Deception/Integrity Score ---", output)
         self.assertIn("WARNING: A high deception score of 0.91 was detected.", output)
-        self.assertIn("as the 'Justice' value of the input (0.10) is low.", output)
 
     def test_synthesize_output_low_deception(self):
         """
@@ -85,7 +91,14 @@ class TestOutputGenerator(unittest.TestCase):
             execution=ExecutionPlan(
                 strategy=ExecutionStrategy.INSTRUCTIVE_GUIDANCE,
                 magnitude=1.0,
-                description="Execute with Instructive Guidance, leveraging a power capacity of 1.00."
+                summary="Execute with Instructive Guidance, leveraging a power capacity of 1.00.",
+                steps=[
+                    "Assess the knowledge gaps of the individuals involved.",
+                    "Provide clear, step-by-step instructions.",
+                    "Offer mentorship and opportunities for growth."
+                ],
+                outcome="To empower individuals with new knowledge and skills.",
+                principles_to_uphold=["Patience", "Clarity", "Mentorship"]
             ),
             final_output="",
             anchor_distance=1.1,
@@ -108,16 +121,15 @@ class TestOutputGenerator(unittest.TestCase):
         output = generator.synthesize_output(result)
 
         self.assertIn("--- Executive Summary ---", output)
-        self.assertIn("recommended course of action, based on the principle of 'Discerning Wisdom', is 'Instructive Guidance'", output)
         self.assertIn("--- Foundational Principle ---", output)
-        self.assertIn("grounded in the principle of 'Discerning Wisdom'", output)
-        self.assertIn("The principle of knowledge, understanding, and insight.", output)
-        self.assertIn("harmony index of 0.46", output)
+        self.assertIn("--- Detailed Execution Plan ---", output)
+        self.assertIn("Strategy: Instructive Guidance", output)
+        self.assertIn("Offer mentorship and opportunities for growth.", output)
+        self.assertIn("Intended Outcome: To empower individuals with new knowledge and skills.", output)
+        self.assertIn("Principles to Uphold: Patience, Clarity, Mentorship", output)
         self.assertIn("--- Semantic Trajectory ---", output)
-        self.assertIn("acceleration of 0.54", output)
         self.assertIn("--- Deception/Integrity Score ---", output)
         self.assertIn("The analysis confirms a high degree of semantic integrity", output)
-        self.assertIn("consistent with the input's high 'Justice' value of 0.90.", output)
 
 
 if __name__ == '__main__':

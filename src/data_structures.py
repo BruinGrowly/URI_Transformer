@@ -39,6 +39,32 @@ class ExecutionPlan:
     """A structured plan for the Execution stage."""
     strategy: ExecutionStrategy
     magnitude: float
+    summary: str
+    steps: List[str] = field(default_factory=list)
+    outcome: str = ""
+    principles_to_uphold: List[str] = field(default_factory=list)
+
+
+@dataclass
+class QLAEContext:
+    """A structured context object from the QLAE framework."""
+    domains: Dict[QLAEDomain, float]
+    primary_domain: QLAEDomain
+    is_valid: bool = True
+
+
+class ExecutionStrategy(Enum):
+    COMPASSIONATE_ACTION = "Compassionate Action"
+    AUTHORITATIVE_COMMAND = "Authoritative Command"
+    INSTRUCTIVE_GUIDANCE = "Instructive Guidance"
+    CORRECTIVE_JUDGMENT = "Corrective Judgment"
+
+
+@dataclass
+class ExecutionPlan:
+    """A structured plan for the Execution stage."""
+    strategy: ExecutionStrategy
+    magnitude: float
     description: str
 
 
@@ -99,6 +125,12 @@ class Intent:
     purpose: str
     guiding_principles: List[str] = field(default_factory=list)
 
+
+@dataclass
+class Trajectory:
+    """Represents the semantic trajectory between two coordinates."""
+    velocity: PhiCoordinate
+    acceleration: float
 
 @dataclass
 class Trajectory:

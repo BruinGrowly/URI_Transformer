@@ -33,7 +33,20 @@ class OutputGenerator:
             f"harmony index of {result.harmony_index:.2f}."
         )
 
-        # 3. Semantic Trajectory
+        # 3. Detailed Execution Plan
+        narrative.append("\n--- Detailed Execution Plan ---")
+        narrative.append(f"Strategy: {result.execution.strategy.value}")
+        narrative.append(f"Summary: {result.execution.summary}")
+        narrative.append("Steps:")
+        for i, step in enumerate(result.execution.steps):
+            narrative.append(f"  {i+1}. {step}")
+        narrative.append(f"Intended Outcome: {result.execution.outcome}")
+        narrative.append(
+            f"Principles to Uphold: {', '.join(result.execution.principles_to_uphold)}"
+        )
+
+
+        # 4. Semantic Trajectory
         narrative.append(
             "\n--- Semantic Trajectory ---\n"
             f"The semantic trajectory from the raw input to the aligned "
@@ -42,7 +55,7 @@ class OutputGenerator:
             f"successful alignment with the system's core principles."
         )
 
-        # 4. Deception/Integrity Score
+        # 5. Deception/Integrity Score
         narrative.append("\n--- Deception/Integrity Score ---")
         if result.deception_score > 0.5:
             narrative.append(

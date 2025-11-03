@@ -50,13 +50,53 @@ class GODFramework:
         }
         strategy = max(coords, key=coords.get)
 
-        description = (
+        summary = (
             f"Execute with {strategy.value}, leveraging a power "
             f"capacity of {power_score:.2f}."
         )
 
+        steps = []
+        outcome = ""
+        principles = []
+
+        if strategy == ExecutionStrategy.COMPASSIONATE_ACTION:
+            steps = [
+                "Identify the immediate needs of all involved.",
+                "Provide resources and support to alleviate suffering.",
+                "Foster an environment of empathy and understanding."
+            ]
+            outcome = "To restore emotional well-being and strengthen relationships."
+            principles = ["Empathy", "Kindness", "Generosity"]
+        elif strategy == ExecutionStrategy.AUTHORITATIVE_COMMAND:
+            steps = [
+                "Clearly define the objective and desired outcome.",
+                "Issue clear, concise directives to all parties.",
+                "Monitor progress and enforce compliance."
+            ]
+            outcome = "To establish order and achieve the objective efficiently."
+            principles = ["Clarity", "Decisiveness", "Accountability"]
+        elif strategy == ExecutionStrategy.INSTRUCTIVE_GUIDANCE:
+            steps = [
+                "Assess the knowledge gaps of the individuals involved.",
+                "Provide clear, step-by-step instructions.",
+                "Offer mentorship and opportunities for growth."
+            ]
+            outcome = "To empower individuals with new knowledge and skills."
+            principles = ["Patience", "Clarity", "Mentorship"]
+        elif strategy == ExecutionStrategy.CORRECTIVE_JUDGMENT:
+            steps = [
+                "Identify the specific violation of principles or rules.",
+                "Administer a fair and proportionate consequence.",
+                "Provide a path for remediation and restoration."
+            ]
+            outcome = "To uphold justice, correct wrongdoing, and restore balance."
+            principles = ["Fairness", "Accountability", "Restoration"]
+
         return ExecutionPlan(
             strategy=strategy,
             magnitude=power_score,
-            description=description
+            summary=summary,
+            steps=steps,
+            outcome=outcome,
+            principles_to_uphold=principles
         )
