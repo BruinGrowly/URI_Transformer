@@ -1,38 +1,73 @@
 """
-Data Structures
-===============
-
-This module defines the core data structures used throughout the
-TruthSenseTransformer pipeline.
+Shared Data Structures
 """
 
-from dataclasses import dataclass
-from typing import List
+from dataclasses import dataclass, field
+from typing import List, Dict
 from src.phi_geometric_engine import PhiCoordinate
-from src.frameworks import QLAEContext, ExecutionPlan
+from enum import Enum
+
+
+class QLAEDomain(Enum):
+    ICE = "Consciousness"
+    SFM = "Matter"
+    IPE = "Life"
+    PFE = "Energy"
+    STM = "Information"
+    PTD = "Space-Time"
+    CCC = "Relationship"
+
+
+@dataclass
+class QLAEContext:
+    """A structured context object from the QLAE framework."""
+    domains: Dict[QLAEDomain, float]
+    primary_domain: QLAEDomain
+    is_valid: bool = True
+
+
+class ExecutionStrategy(Enum):
+    COMPASSIONATE_ACTION = "Compassionate Action"
+    AUTHORITATIVE_COMMAND = "Authoritative Command"
+    INSTRUCTIVE_GUIDANCE = "Instructive Guidance"
+    CORRECTIVE_JUDGMENT = "Corrective Judgment"
+
+
+@dataclass
+class ExecutionPlan:
+    """A structured plan for the Execution stage."""
+    strategy: ExecutionStrategy
+    magnitude: float
+    description: str
 
 
 @dataclass
 class Intent:
-    """A structured object for the Intent stage."""
+    """Represents the Intent stage of the ICE framework."""
     purpose: str
-    guiding_principles: List[str]
+    guiding_principles: List[str] = field(default_factory=list)
+
+
+@dataclass
+class Trajectory:
+    """Represents the semantic trajectory between two coordinates."""
+    velocity: PhiCoordinate
+    acceleration: float
 
 
 @dataclass
 class TruthSenseResult:
-    """A comprehensive result object for the deep ICE pipeline."""
-    # Core Components
+    """The final, structured output of the TruthSenseTransformer."""
     raw_coord: PhiCoordinate
     aligned_coord: PhiCoordinate
     intent: Intent
     context: QLAEContext
     execution: ExecutionPlan
-
-    # Final Output
     final_output: str
-
-    # Metrics
     anchor_distance: float
+    harmony_index: float
     semantic_integrity: float
     truth_sense_validation: bool
+    deception_score: float
+    foundational_principle: str
+    trajectory: Trajectory
