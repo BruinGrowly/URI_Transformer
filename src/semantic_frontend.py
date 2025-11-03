@@ -7,7 +7,6 @@ from torch import nn
 from transformers import AutoTokenizer, AutoModel
 from src.phi_geometric_engine import PhiCoordinate
 
-
 class ProjectionHead(nn.Module):
     """
     A simple neural network that projects a high-dimensional vector
@@ -23,7 +22,6 @@ class ProjectionHead(nn.Module):
         x = self.fc(x)
         x = self.sigmoid(x) * 2  # Scale output to [0, 2]
         return x
-
 
 class SemanticFrontEnd:
     """

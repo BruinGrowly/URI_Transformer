@@ -1,23 +1,8 @@
 """
 Labeled Training Data for the Semantic Front-End
-================================================
-
-This module contains a curated list of sentences, each manually labeled
-with its corresponding PhiCoordinate (Love, Justice, Power, Wisdom).
-
-Format: (sentence, (love, justice, power, wisdom))
-Each coordinate ranges from 0.0 to 1.0
-
-This expanded dataset (500+ examples) provides comprehensive coverage
-of the 4D semantic space to prevent overfitting and improve generalization.
 """
 
 TRAINING_DATA = [
-    # ========================================================================
-    # HIGH LOVE - Compassion, Kindness, Mercy, Care, Nurturing
-    # ========================================================================
-
-    # Pure Love expressions
     ("True love is compassionate and kind.", (0.9, 0.7, 0.5, 0.8)),
     ("She showed great compassion for the suffering.", (0.9, 0.6, 0.4, 0.7)),
     ("His kindness was a gift to everyone he met.", (0.9, 0.7, 0.3, 0.6)),
