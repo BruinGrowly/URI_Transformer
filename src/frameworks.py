@@ -1,38 +1,18 @@
 """
-Core Conceptual Frameworks (Evolved)
-=====================================
-
-Implements the evolved conceptual models for the TruthSense Transformer.
-These frameworks now produce richer, structured outputs for a deeper
-and more integrated ICE pipeline.
+Core Conceptual Frameworks
 """
 
-from enum import Enum
-from dataclasses import dataclass
-from typing import Dict
+from src.data_structures import (
+    QLAEContext,
+    QLAEDomain,
+    ExecutionPlan,
+    ExecutionStrategy
+)
 from src.phi_geometric_engine import PhiCoordinate
 
 
-class QLAEDomain(Enum):
-    ICE = "Consciousness"
-    SFM = "Matter"
-    IPE = "Life"
-    PFE = "Energy"
-    STM = "Information"
-    PTD = "Space-Time"
-    CCC = "Relationship"
-
-
-@dataclass
-class QLAEContext:
-    """A structured context object from the QLAE framework."""
-    domains: Dict[QLAEDomain, float]
-    primary_domain: QLAEDomain
-    is_valid: bool = True
-
-
 class QLAEFramework:
-    """Evolved QLAE model for deep contextual analysis."""
+    """QLAE model for deep contextual analysis."""
     def get_context(self, coord: PhiCoordinate) -> QLAEContext:
         """Provides a structured, weighted contextual analysis."""
         scores = {
@@ -56,23 +36,8 @@ class QLAEFramework:
         )
 
 
-class ExecutionStrategy(Enum):
-    COMPASSIONATE_ACTION = "Compassionate Action"
-    AUTHORITATIVE_COMMAND = "Authoritative Command"
-    INSTRUCTIVE_GUIDANCE = "Instructive Guidance"
-    CORRECTIVE_JUDGMENT = "Corrective Judgment"
-
-
-@dataclass
-class ExecutionPlan:
-    """A structured plan for the Execution stage."""
-    strategy: ExecutionStrategy
-    magnitude: float  # The power/feasibility of the plan
-    description: str
-
-
 class GODFramework:
-    """Evolved GOD framework to generate a detailed ExecutionPlan."""
+    """GOD framework to generate a detailed ExecutionPlan."""
     def generate_plan(
         self, power_score: float, intent_coord: PhiCoordinate
     ) -> ExecutionPlan:
@@ -85,13 +50,53 @@ class GODFramework:
         }
         strategy = max(coords, key=coords.get)
 
-        description = (
+        summary = (
             f"Execute with {strategy.value}, leveraging a power "
             f"capacity of {power_score:.2f}."
         )
 
+        steps = []
+        outcome = ""
+        principles = []
+
+        if strategy == ExecutionStrategy.COMPASSIONATE_ACTION:
+            steps = [
+                "Identify the immediate needs of all involved.",
+                "Provide resources and support to alleviate suffering.",
+                "Foster an environment of empathy and understanding."
+            ]
+            outcome = "To restore emotional well-being and strengthen relationships."
+            principles = ["Empathy", "Kindness", "Generosity"]
+        elif strategy == ExecutionStrategy.AUTHORITATIVE_COMMAND:
+            steps = [
+                "Clearly define the objective and desired outcome.",
+                "Issue clear, concise directives to all parties.",
+                "Monitor progress and enforce compliance."
+            ]
+            outcome = "To establish order and achieve the objective efficiently."
+            principles = ["Clarity", "Decisiveness", "Accountability"]
+        elif strategy == ExecutionStrategy.INSTRUCTIVE_GUIDANCE:
+            steps = [
+                "Assess the knowledge gaps of the individuals involved.",
+                "Provide clear, step-by-step instructions.",
+                "Offer mentorship and opportunities for growth."
+            ]
+            outcome = "To empower individuals with new knowledge and skills."
+            principles = ["Patience", "Clarity", "Mentorship"]
+        elif strategy == ExecutionStrategy.CORRECTIVE_JUDGMENT:
+            steps = [
+                "Identify the specific violation of principles or rules.",
+                "Administer a fair and proportionate consequence.",
+                "Provide a path for remediation and restoration."
+            ]
+            outcome = "To uphold justice, correct wrongdoing, and restore balance."
+            principles = ["Fairness", "Accountability", "Restoration"]
+
         return ExecutionPlan(
             strategy=strategy,
             magnitude=power_score,
-            description=description
+            summary=summary,
+            steps=steps,
+            outcome=outcome,
+            principles_to_uphold=principles
         )
