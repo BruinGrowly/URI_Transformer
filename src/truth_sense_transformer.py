@@ -10,7 +10,7 @@ from src.phi_geometric_engine import (
     quadratic_semantic_mix,
     golden_semantic_mix
 )
-from src.frameworks import QLAEFramework, GODFramework
+from src.frameworks import QLAEFramework, GODFramework, ICEFramework
 from src.output_generator import OutputGenerator
 from src.data_structures import Intent, TruthSenseResult, Trajectory
 from src.semantic_frontend import SemanticFrontEnd
@@ -34,6 +34,7 @@ class TruthSenseTransformer:
         self.output_generator = OutputGenerator()
         self.knowledge_graph = KnowledgeGraph()
         self.code_analyzer = CodeSemanticAnalyzer() # Initialize CodeSemanticAnalyzer
+        self.ice_framework = ICEFramework() # Initialize ICEFramework
         self.mixing_method = mixing_method # Store mixing method
 
         # Map mixing method strings to functions
@@ -47,20 +48,23 @@ class TruthSenseTransformer:
 
     def _process_coordinate(self, raw_coord: PhiCoordinate) -> TruthSenseResult:
         """Helper method to process a raw PhiCoordinate through the pipeline."""
+        # Find the closest principle first, as it's needed for ICE processing
+        closest_principle = self.knowledge_graph.find_closest_principle(raw_coord)
+
+        # Apply ICE Framework layers sequentially
+        # 1. Intent (Love + Wisdom)
+        intent_coord = self.ice_framework.process_intent(raw_coord, closest_principle)
+        # 2. Context (Justice)
+        context_coord = self.ice_framework.process_context(intent_coord, closest_principle)
+        # 3. Execution (Power)
+        aligned_coord = self.ice_framework.process_execution(context_coord, closest_principle)
+
+        # The anchor_dist and harmony_index are still relevant for the TruthSenseResult,
+        # but aligned_coord is now derived from ICE processing.
         anchor_dist = self.phi_engine["spiral"].distance(
             raw_coord, self.anchor_point
         )
         harmony_index = calculate_harmony_index(anchor_dist)
-
-        love = raw_coord.love + (self.anchor_point.love - raw_coord.love) \
-            * harmony_index
-        justice = raw_coord.justice + \
-            (self.anchor_point.justice - raw_coord.justice) * harmony_index
-        power = raw_coord.power + (self.anchor_point.power - raw_coord.power) \
-            * harmony_index
-        wisdom = raw_coord.wisdom + \
-            (self.anchor_point.wisdom - raw_coord.wisdom) * harmony_index
-        aligned_coord = PhiCoordinate(love, justice, power, wisdom)
 
         intent = Intent(
             purpose="To act with benevolent purpose "
@@ -81,8 +85,7 @@ class TruthSenseTransformer:
 
         deception_score = self.calculate_deception_score(aligned_coord.justice)
 
-        foundational_principle = self.knowledge_graph.find_closest_principle(
-            aligned_coord)
+        foundational_principle = closest_principle
 
         velocity, acceleration = calculate_trajectory(raw_coord, aligned_coord)
 
