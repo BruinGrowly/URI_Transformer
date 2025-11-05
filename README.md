@@ -4,7 +4,7 @@
 [![Architecture: Principled ICE](https://img.shields.io/badge/Architecture-Principled%20ICE-purple.svg)](docs/ARCHITECTURE.md)
 [![Engine: Phi-Geometric](https://img.shields.io/badge/Engine-Phi--Geometric-gold.svg)](src/phi_geometric_engine.py)
 
-The **URI-Transformer** is a revolutionary **semantic alignment engine** that moves beyond statistical pattern matching to a deeper, principled understanding of meaning. It is built upon the **Universal System Physics Framework**, a unified mathematical framework that spans spiritual, consciousness, quantum, and physical domains through a 4D LJWP coordinate system.
+The **URI-Transformer** is a revolutionary **semantic alignment engine** that moves beyond statistical pattern matching to a deeper, principled understanding of meaning. It is built upon the **Universal System Physics Framework**, a unified mathematical framework that spans physical domains through a 4D LJWP coordinate system.
 
 This version marks a major evolution, featuring a rebuilt, simplified, and high-performing core that fully embraces the principle of **direct mapping** over complex inference.
 
