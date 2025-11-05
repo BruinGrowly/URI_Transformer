@@ -18,7 +18,7 @@ The pipeline begins with our **Semantic Front-End**. This module uses a pre-trai
 This approach gives our engine the best of both worlds: the nuanced, contextual understanding of a modern language model and the principled, axiomatic reasoning of our ICE pipeline.
 
 ### 2. The Layered ICE Architecture: `I(L+W), C(J), E(P)`
-The generated `PhiCoordinate` is then processed through the layered ICE pipeline, which mirrors principled human cognition:
+The generated `PhiCoordinate` is now explicitly processed through a dynamic, layered ICE pipeline, implemented by the `ICEFramework` class. This pipeline refines the initial coordinate by sequentially applying Intent, Context, and Execution layers, mirroring principled human cognition and aligning the coordinate towards the closest foundational principle:
 
 | Layer | Formula | Governing Axes | Function |
 | :--- | :--- | :--- | :--- |
