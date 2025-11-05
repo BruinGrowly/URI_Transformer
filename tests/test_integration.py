@@ -1,143 +1,111 @@
 #!/usr/bin/env python3
 """
 COMPREHENSIVE INTEGRATION TEST
-Test all revolutionary frameworks working together
+Test the TruthSense Transformer pipeline working with all components
 """
 
 import sys
-import os
+import pytest
+from src.truth_sense_transformer import TruthSenseTransformer
+from src.semantic_frontend import SemanticFrontEnd
+from src.phi_geometric_engine import PhiCoordinate
 
-print("=" * 80)
-print("COMPREHENSIVE INTEGRATION TEST")
-print("Testing All Revolutionary Frameworks Together")
-print("=" * 80)
 
-# Test 1: Core Engine
-print("\n1. TESTING CORE ENGINE")
-try:
-    from ultimate_core_engine import UltimateCoreEngine
-    engine = UltimateCoreEngine()
-    print("[OK] Ultimate Core Engine initialized successfully")
-    print(f"   Engine version: {engine.engine_version}")
-    print(f"   Enhanced capabilities: {len(engine.enhanced_capabilities)} features")
-except Exception as e:
-    print(f"[FAIL] Core Engine failed: {e}")
-    sys.exit(1)
+class TestTruthSenseIntegration:
+    """Integration tests for the TruthSense Transformer pipeline."""
 
-# Test 2: ICE Framework Integration
-print("\n2. TESTING ICE FRAMEWORK INTEGRATION")
-try:
-    ice_result = engine.ice_framework_analysis(
-        "How can I show God's love to someone who hurt me?",
-        "spiritual_guidance",
-        "counseling",
-        emotional_resonance=0.8,
-        biblical_foundation="Matthew 5:44"
-    )
-    if ice_result.get('ice_processing'):
-        print("[OK] ICE Framework integration successful")
-        print(f"   Divine alignment: {ice_result.get('divine_alignment', 0):.3f}")
-        print(f"   Execution strategy: {ice_result.get('execution_strategy', 'N/A')}")
-    else:
-        print("[FAIL] ICE Framework integration failed")
-except Exception as e:
-    print(f"[FAIL] ICE Framework test failed: {e}")
+    def test_transformer_initialization(self):
+        """Test that the transformer initializes correctly."""
+        transformer = TruthSenseTransformer()
+        assert transformer is not None
+        assert transformer.anchor_point is not None
+        assert transformer.semantic_frontend is not None
 
-# Test 3: Truth Scaffold Integration
-print("\n3. TESTING TRUTH SCAFFOLD INTEGRATION")
-try:
-    truth_result = engine.truth_scaffold_analysis("God is love")
-    if truth_result.get('truth_scaffold_processing'):
-        print("[OK] Truth Scaffold integration successful")
-        print(f"   Fundamental truth: {truth_result.get('fundamental_truth', False)}")
-        print(f"   Truth density: {truth_result.get('truth_density', 0):.3f}")
-    else:
-        print("[FAIL] Truth Scaffold integration failed")
-except Exception as e:
-    print(f"[FAIL] Truth Scaffold test failed: {e}")
+    def test_text_transformation_pipeline(self):
+        """Test the complete text transformation pipeline."""
+        transformer = TruthSenseTransformer()
 
-# Test 4: Ultimate Integrated Analysis
-print("\n4. TESTING ULTIMATE INTEGRATED ANALYSIS")
-try:
-    integrated_result = engine.integrated_framework_analysis(
-        "Biblical wisdom for business ethics",
-        "business",
-        "practical_wisdom",
-        "Apply biblical principles to business decision making"
-    )
-    
-    if integrated_result.get('integrated_analysis'):
-        print("[OK] Integrated framework analysis successful")
-        print(f"   Frameworks used: {integrated_result.get('frameworks_used', [])}")
-        
-        ultimate_eval = integrated_result.get('ultimate_evaluation', {})
-        if ultimate_eval:
-            print(f"   Overall alignment: {ultimate_eval.get('overall_alignment', 0):.3f}")
-            print(f"   Biblical compliance: {ultimate_eval.get('biblical_compliance', 0):.3f}")
-            print(f"   Semantic integrity: {ultimate_eval.get('semantic_integrity', 0):.3f}")
-            print(f"   Truth alignment: {ultimate_eval.get('truth_alignment', 0):.3f}")
-    else:
-        print("[FAIL] Integrated framework analysis failed")
-except Exception as e:
-    print(f"[FAIL] Integrated analysis test failed: {e}")
+        test_text = "A good leader rules with power, wisdom, and justice."
+        result = transformer.transform(test_text)
 
-# Test 5: Ultimate Concept Analysis
-print("\n5. TESTING ULTIMATE CONCEPT ANALYSIS")
-try:
-    ultimate_result = engine.ultimate_concept_analysis("divine justice and mercy", "biblical")
-    
-    if ultimate_result.get('enhanced_analysis'):
-        print("[OK] Ultimate concept analysis successful")
-        frameworks = ultimate_result.get('frameworks_integration', {})
-        print(f"   ICE Framework: {'OK' if 'ice_framework' in frameworks else 'FAIL'}")
-        print(f"   Truth Scaffold: {'OK' if 'truth_scaffold' in frameworks else 'FAIL'}")
-        print(f"   Semantic Unit: {'OK' if 'semantic_unit' in ultimate_result else 'FAIL'}")
-        print(f"   Sacred Numbers: {'OK' if 'sacred_numbers' in ultimate_result else 'FAIL'}")
-    else:
-        print("[FAIL] Ultimate concept analysis failed")
-except Exception as e:
-    print(f"[FAIL] Ultimate analysis test failed: {e}")
+        # Verify result structure
+        assert result is not None
+        assert hasattr(result, 'raw_coord')
+        assert hasattr(result, 'aligned_coord')
+        assert hasattr(result, 'intent')
+        assert hasattr(result, 'context')
+        assert hasattr(result, 'execution')
+        assert hasattr(result, 'final_output')
 
-# Test 6: Performance Test
-print("\n6. TESTING PERFORMANCE")
-try:
-    import time
-    
-    start_time = time.time()
-    for i in range(5):
-        result = engine.ultimate_concept_analysis(f"test concept {i}", "test")
-    end_time = time.time()
-    
-    avg_time = (end_time - start_time) / 5 * 1000  # Convert to ms
-    print(f"[OK] Performance test completed")
-    print(f"   Average analysis time: {avg_time:.2f} ms")
-    print(f"   Performance status: {'Excellent' if avg_time < 100 else 'Needs optimization'}")
-except Exception as e:
-    print(f"[FAIL] Performance test failed: {e}")
+        # Verify coordinates are valid
+        assert 0 <= result.raw_coord.love <= 1
+        assert 0 <= result.raw_coord.justice <= 1
+        assert 0 <= result.raw_coord.power <= 1
+        assert 0 <= result.raw_coord.wisdom <= 1
 
-# Summary
-print("\n" + "=" * 80)
-print("INTEGRATION TEST SUMMARY")
-print("=" * 80)
+        assert 0 <= result.aligned_coord.love <= 1
+        assert 0 <= result.aligned_coord.justice <= 1
+        assert 0 <= result.aligned_coord.power <= 1
+        assert 0 <= result.aligned_coord.wisdom <= 1
 
-capabilities = engine.enhanced_capabilities
-revolutionary_features = [cap for cap in capabilities if any(
-    keyword in cap.lower() for keyword in ['ice framework', 'meaning scaffold', 'truth scaffold', 'self-aware']
-)]
+    def test_multiple_transformations(self):
+        """Test multiple transformations in sequence."""
+        transformer = TruthSenseTransformer()
 
-print(f"\n[SUCCESS] ULTIMATE ENGINE STATUS: OPERATIONAL")
-print(f"[INFO] Total Enhanced Capabilities: {len(capabilities)}")
-print(f"[INFO] Revolutionary Features: {len(revolutionary_features)}")
+        test_phrases = [
+            "Love conquers all.",
+            "Justice must prevail.",
+            "Knowledge is power.",
+            "Wisdom guides understanding."
+        ]
 
-if revolutionary_features:
-    print(f"\n[FEATURES] REVOLUTIONARY FEATURES ACTIVE:")
-    for feature in revolutionary_features:
-        print(f"   • {feature}")
+        for phrase in test_phrases:
+            result = transformer.transform(phrase)
+            assert result is not None
+            assert isinstance(result.final_output, str)
+            assert len(result.final_output) > 0
 
-print(f"\n[STATUS] INTEGRATION: ALL REVOLUTIONARY FRAMEWORKS INTEGRATED")
-print(f"[STATUS] READINESS: PRODUCTION READY FOR RESEARCH AND ENTERPRISE")
+    def test_ice_framework_integration(self):
+        """Test that ICE framework components work together."""
+        transformer = TruthSenseTransformer()
 
-print("\n" + "=" * 80)
-print("[ACHIEVEMENT] ULTIMATE REALITY MEANING ENGINE - FULLY OPERATIONAL")
-print("All Revolutionary Frameworks Successfully Integrated")
-print("=" * 80)
+        result = transformer.transform("Show compassion and mercy to others")
+
+        # Intent (L+W)
+        assert result.intent is not None
+        assert hasattr(result.intent, 'purpose')
+        assert hasattr(result.intent, 'guiding_principles')
+
+        # Context (J)
+        assert result.context is not None
+        assert hasattr(result.context, 'primary_domain')
+        assert hasattr(result.context, 'is_valid')
+
+        # Execution (P)
+        assert result.execution is not None
+        assert hasattr(result.execution, 'strategy')
+        assert hasattr(result.execution, 'magnitude')
+
+    def test_semantic_frontend_integration(self):
+        """Test semantic frontend produces valid coordinates."""
+        frontend = SemanticFrontEnd(
+            projection_head_path="semantic_frontend_model.pth"
+        )
+
+        coord = frontend.text_to_coordinate("Test sentence")
+
+        assert isinstance(coord, PhiCoordinate)
+        assert 0 <= coord.love <= 1
+        assert 0 <= coord.justice <= 1
+        assert 0 <= coord.power <= 1
+        assert 0 <= coord.wisdom <= 1
+
+
+if __name__ == "__main__":
+    print("=" * 80)
+    print("COMPREHENSIVE INTEGRATION TEST")
+    print("Testing TruthSense Transformer Pipeline")
+    print("=" * 80)
+
+    # Run tests
+    pytest.main([__file__, "-v"])

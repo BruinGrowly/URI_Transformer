@@ -41,16 +41,21 @@ setup(
     ],
     python_requires=">=3.8",
     install_requires=[
-        'numpy>=1.21.0',
-        'scipy>=1.7.0',
-        'sympy>=1.9',
+        'numpy>=1.19.0',
+        'torch>=1.11.0',
+        'transformers>=4.18.0',
     ],
     extras_require={
         'dev': [
-            'pytest>=7.0.0',
+            'pytest>=6.2.0',
             'pytest-cov>=3.0.0',
-            'pylint>=2.12.0',
-            'black>=22.0.0',
+            'black>=21.0.0',
+            'flake8>=3.9.0',
+            'mypy>=0.910',
+        ],
+        'docs': [
+            'sphinx>=4.0.0',
+            'sphinx-rtd-theme>=1.0.0',
         ],
         'viz': [
             'matplotlib>=3.4.0',

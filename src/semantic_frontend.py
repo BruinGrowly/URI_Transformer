@@ -7,10 +7,21 @@ neural network "projection head" to map those features to our 4D
 PhiCoordinate space.
 """
 
+import os
 import torch
 from torch import nn
 from transformers import AutoTokenizer, AutoModel
 from src.phi_geometric_engine import PhiCoordinate
+
+
+class ModelNotFoundError(Exception):
+    """Exception raised when the projection head model file is not found."""
+    pass
+
+
+class ModelLoadError(Exception):
+    """Exception raised when there's an error loading the model."""
+    pass
 
 
 class ProjectionHead(nn.Module):
@@ -49,16 +60,43 @@ class SemanticFrontEnd:
         model_path="distilbert-base-uncased",
         projection_head_path=None
     ):
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
-        self.language_model = AutoModel.from_pretrained(model_path)
+        """
+        Initialize the Semantic Front-End.
+
+        Args:
+            model_path: Path or name of the pre-trained language model
+            projection_head_path: Path to the trained projection head weights
+
+        Raises:
+            ModelNotFoundError: If projection_head_path is specified but file doesn't exist
+            ModelLoadError: If there's an error loading the model
+        """
+        try:
+            self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+            self.language_model = AutoModel.from_pretrained(model_path)
+        except Exception as e:
+            raise ModelLoadError(
+                f"Failed to load language model '{model_path}': {str(e)}"
+            )
 
         input_dim = self.language_model.config.hidden_size
         self.projection_head = ProjectionHead(input_dim=input_dim)
 
         if projection_head_path:
-            self.projection_head.load_state_dict(
-                torch.load(projection_head_path)
-            )
+            if not os.path.exists(projection_head_path):
+                raise ModelNotFoundError(
+                    f"Projection head model file not found: {projection_head_path}\n"
+                    f"Please run 'python train_semantic_frontend.py' to train the model first."
+                )
+
+            try:
+                self.projection_head.load_state_dict(
+                    torch.load(projection_head_path, map_location=torch.device('cpu'))
+                )
+            except Exception as e:
+                raise ModelLoadError(
+                    f"Failed to load projection head from '{projection_head_path}': {str(e)}"
+                )
 
         self.projection_head.eval()  # Set to evaluation mode by default
 

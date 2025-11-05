@@ -14,15 +14,63 @@ PHI_INVERSE = 1 / PHI
 GOLDEN_ANGLE_RAD = np.pi * (3 - np.sqrt(5))
 
 
+class CoordinateValidationError(ValueError):
+    """Exception raised when PhiCoordinate values are invalid."""
+    pass
+
+
 @dataclass
 class PhiCoordinate:
-    """A 4D coordinate in the semantic space."""
+    """
+    A 4D coordinate in the semantic space.
+
+    All coordinates should be in the range [0, 1] representing normalized
+    semantic dimensions: Love, Justice, Power, and Wisdom.
+
+    Raises:
+        CoordinateValidationError: If any coordinate value is outside [0, 1]
+    """
     love: float
     justice: float
     power: float
     wisdom: float
 
+    def __post_init__(self):
+        """Validate coordinate values after initialization."""
+        self._validate()
+
+    def _validate(self):
+        """
+        Validate that all coordinate values are in valid range [0, 1].
+
+        Raises:
+            CoordinateValidationError: If any value is outside valid range
+        """
+        coords = {
+            'love': self.love,
+            'justice': self.justice,
+            'power': self.power,
+            'wisdom': self.wisdom
+        }
+
+        invalid_coords = []
+        for name, value in coords.items():
+            if not isinstance(value, (int, float)):
+                invalid_coords.append(
+                    f"{name}={value} (must be numeric)"
+                )
+            elif not (0 <= value <= 1):
+                invalid_coords.append(
+                    f"{name}={value:.4f} (must be in range [0, 1])"
+                )
+
+        if invalid_coords:
+            raise CoordinateValidationError(
+                f"Invalid PhiCoordinate values: {', '.join(invalid_coords)}"
+            )
+
     def to_numpy(self):
+        """Convert coordinate to numpy array."""
         return np.array([self.love, self.justice, self.power, self.wisdom])
 
 
