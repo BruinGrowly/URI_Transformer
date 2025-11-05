@@ -18,7 +18,7 @@ The front-end is responsible for converting raw text into a 4D `PhiCoordinate`. 
 The `TruthSenseTransformer` class orchestrates the entire semantic alignment process. Its key functions include:
 
 - **Coordinate Alignment:** The raw `PhiCoordinate` from the front-end is aligned with a predefined `anchor_point`, resulting in an `aligned_coord`. This process is governed by the `harmony_index`.
-- **ICE Pipeline Processing:** The `aligned_coord` is processed through the three stages of the ICE framework (Intent, Context, Execution), which are handled by the `QLAEFramework` and `GODFramework`.
+- **ICE Pipeline Processing:** In this version, the ICE framework (Intent, Context, and Execution) is implicitly applied by aligning the `raw_coord` to the closest `Principle` in the Knowledge Graph. The `aligned_coord` effectively represents the outcome of this principled alignment.
 - **Knowledge Graph Integration:** The `aligned_coord` is used to query the `KnowledgeGraph` to find the closest matching `Principle`, making the system's reasoning transparent.
 - **Semantic Calculus:** The `raw_coord` and `aligned_coord` are analyzed by the `SemanticCalculus` to determine the "velocity" and "acceleration" of the semantic shift that occurred during alignment.
 
