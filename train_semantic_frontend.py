@@ -6,8 +6,9 @@ import torch
 from torch import nn, optim
 from src.semantic_frontend import SemanticFrontEnd
 from src.training_data import TRAINING_DATA
+from src.dataset import SemanticDataset
 import random
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import DataLoader
 
 # Configuration
 NUM_EPOCHS = 1000
@@ -16,26 +17,17 @@ BATCH_SIZE = 8
 MODEL_SAVE_PATH = "trained_semantic_frontend_model.pth"
 RANDOM_SEED = 42
 
-random.seed(RANDOM_SEED)
-torch.manual_seed(RANDOM_SEED)
-
 def train():
     """Trains the ProjectionHead."""
     print("--- Training Semantic Front-End ---")
 
-    # Prepare data
-    sentences = [item[0] for item in TRAINING_DATA]
-    labels = torch.tensor([item[1] for item in TRAINING_DATA], dtype=torch.float32) * 2
+    # Set random seed for reproducibility
+    random.seed(RANDOM_SEED)
+    torch.manual_seed(RANDOM_SEED)
 
-    # Initialize model
+    # Initialize model and dataset
     frontend = SemanticFrontEnd()
-
-    # Create DataLoader
-    with torch.no_grad():
-        inputs = frontend.tokenizer(sentences, return_tensors="pt", truncation=True, padding=True)
-        embeddings = frontend.language_model(**inputs).last_hidden_state[:, 0, :]
-
-    dataset = TensorDataset(embeddings, labels)
+    dataset = SemanticDataset(TRAINING_DATA)
     loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
     # Optimizer and loss function
@@ -47,10 +39,18 @@ def train():
     for epoch in range(NUM_EPOCHS):
         frontend.projection_head.train()
         total_loss = 0
-        for batch_embeddings, batch_labels in loader:
+        for inputs, labels in loader:
+            # Move inputs to the correct device
+            inputs = {key: val.to(frontend.language_model.device) for key, val in inputs.items()}
+            labels = labels.to(frontend.language_model.device)
+
+            # Get embeddings from the language model
+            with torch.no_grad():
+                embeddings = frontend.language_model(input_ids=inputs['input_ids'].squeeze(1), attention_mask=inputs['attention_mask'].squeeze(1)).last_hidden_state[:, 0, :]
+
             optimizer.zero_grad()
-            predictions = frontend.projection_head(batch_embeddings)
-            loss = criterion(predictions, batch_labels)
+            predictions = frontend.projection_head(embeddings)
+            loss = criterion(predictions, labels)
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
@@ -60,11 +60,23 @@ def train():
 
     # Evaluate
     frontend.projection_head.eval()
+    all_embeddings = []
+    all_labels = []
     with torch.no_grad():
-        predictions = frontend.projection_head(embeddings)
-        final_loss = criterion(predictions, labels).item()
-        ss_res = torch.sum((labels - predictions) ** 2)
-        ss_tot = torch.sum((labels - torch.mean(labels, dim=0)) ** 2)
+        for inputs, labels in loader:
+            inputs = {key: val.to(frontend.language_model.device) for key, val in inputs.items()}
+            embeddings = frontend.language_model(**inputs).last_hidden_state[:, 0, :]
+            all_embeddings.append(embeddings)
+            all_labels.append(labels)
+
+    all_embeddings = torch.cat(all_embeddings)
+    all_labels = torch.cat(all_labels)
+
+    with torch.no_grad():
+        predictions = frontend.projection_head(all_embeddings)
+        final_loss = criterion(predictions, all_labels).item()
+        ss_res = torch.sum((all_labels - predictions) ** 2)
+        ss_tot = torch.sum((all_labels - torch.mean(all_labels, dim=0)) ** 2)
         r2_score = 1 - (ss_res / ss_tot)
 
     print(f"\nFinal Loss: {final_loss:.4f}")

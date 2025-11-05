@@ -5,7 +5,10 @@ TruthSense Transformer
 from src.phi_geometric_engine import (
     PhiCoordinate,
     GoldenSpiral,
-    calculate_harmony_index
+    calculate_harmony_index,
+    universal_semantic_mix,
+    quadratic_semantic_mix,
+    golden_semantic_mix
 )
 from src.frameworks import QLAEFramework, GODFramework
 from src.output_generator import OutputGenerator
@@ -13,13 +16,16 @@ from src.data_structures import Intent, TruthSenseResult, Trajectory
 from src.semantic_frontend import SemanticFrontEnd
 from src.knowledge_graph import KnowledgeGraph
 from src.semantic_calculus import calculate_trajectory
+from src.code_semantics import CodeSemanticAnalyzer # New import
+from typing import Dict
 
 
 class TruthSenseTransformer:
     """The main transformer class."""
 
     def __init__(self, semantic_frontend: SemanticFrontEnd,
-                 anchor_point: PhiCoordinate):
+                 anchor_point: PhiCoordinate,
+                 mixing_method: str = "linear"): # Added mixing_method parameter
         """Initializes the transformer."""
         self.semantic_frontend = semantic_frontend
         self.anchor_point = anchor_point
@@ -27,11 +33,20 @@ class TruthSenseTransformer:
         self.frameworks = {"qlae": QLAEFramework(), "god": GODFramework()}
         self.output_generator = OutputGenerator()
         self.knowledge_graph = KnowledgeGraph()
+        self.code_analyzer = CodeSemanticAnalyzer() # Initialize CodeSemanticAnalyzer
+        self.mixing_method = mixing_method # Store mixing method
 
-    def transform(self, input_text: str) -> TruthSenseResult:
-        """Runs the full transformation pipeline."""
-        raw_coord = self.semantic_frontend.text_to_coordinate(input_text)
+        # Map mixing method strings to functions
+        self._mixing_functions = {
+            "linear": universal_semantic_mix,
+            "quadratic": quadratic_semantic_mix,
+            "golden": golden_semantic_mix,
+        }
+        if self.mixing_method not in self._mixing_functions:
+            raise ValueError(f"Invalid mixing method: {self.mixing_method}. Choose from {list(self._mixing_functions.keys())}")
 
+    def _process_coordinate(self, raw_coord: PhiCoordinate) -> TruthSenseResult:
+        """Helper method to process a raw PhiCoordinate through the pipeline."""
         anchor_dist = self.phi_engine["spiral"].distance(
             raw_coord, self.anchor_point
         )
@@ -90,6 +105,42 @@ class TruthSenseTransformer:
 
         result.final_output = self.output_generator.synthesize_output(result)
         return result
+
+    def transform(self, input_text: str) -> TruthSenseResult:
+        """Runs the full transformation pipeline for text input."""
+        raw_coord = self.semantic_frontend.text_to_coordinate(input_text)
+        return self._process_coordinate(raw_coord)
+
+    def transform_code(self, code_snippet: str) -> TruthSenseResult:
+        """Runs the full transformation pipeline for code input.
+
+        Args:
+            code_snippet: A string containing the code to analyze.
+
+        Returns:
+            A TruthSenseResult object representing the semantic profile of the code.
+        """
+        raw_coord = self.code_analyzer.analyze_code(code_snippet)
+        return self._process_coordinate(raw_coord)
+
+    def generate_from_recipe(self, primary_weights: Dict[str, float], mixing_method: str = None) -> TruthSenseResult:
+        """Generates a TruthSenseResult from a semantic mixing recipe.
+
+        Args:
+            primary_weights: A dictionary of weights for 'love', 'justice', 'power', 'wisdom'.
+            mixing_method: Optional. The mixing method to use ('linear', 'quadratic', 'golden').
+                           If None, uses the method set during initialization.
+
+        Returns:
+            A TruthSenseResult object representing the generated concept.
+        """
+        method_to_use = mixing_method if mixing_method else self.mixing_method
+        mixing_function = self._mixing_functions.get(method_to_use)
+        if not mixing_function:
+            raise ValueError(f"Invalid mixing method: {method_to_use}. Choose from {list(self._mixing_functions.keys())}")
+
+        raw_coord = mixing_function(primary_weights)
+        return self._process_coordinate(raw_coord)
 
     def calculate_deception_score(self, justice_score: float) -> float:
         """Calculates the deception score based on the Justice dimension."""
