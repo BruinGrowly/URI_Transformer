@@ -4,6 +4,7 @@ Phi Geometric Engine
 
 import numpy as np
 from dataclasses import dataclass
+from typing import Dict
 
 
 @dataclass
@@ -24,6 +25,137 @@ class PhiCoordinate:
             self.justice - other.justice,
             self.power - other.power,
             self.wisdom - other.wisdom,
+        )
+
+    # LJPW Mathematical Baselines Integration
+
+    def get_effective_dimensions(self) -> Dict[str, float]:
+        """
+        Calculate coupling-adjusted effective dimensions.
+        Love acts as a force multiplier for other dimensions.
+
+        Returns:
+            Dictionary with effective_L, effective_J, effective_P, effective_W
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.effective_dimensions(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def harmonic_mean(self) -> float:
+        """
+        Calculate harmonic mean (robustness - weakest link metric).
+
+        Returns:
+            Harmonic mean score
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.harmonic_mean(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def geometric_mean(self) -> float:
+        """
+        Calculate geometric mean (effectiveness - multiplicative interaction).
+
+        Returns:
+            Geometric mean score
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.geometric_mean(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def coupling_aware_sum(self) -> float:
+        """
+        Calculate coupling-aware sum (growth potential with Love amplification).
+        Note: Can exceed 1.0 due to coupling effects.
+
+        Returns:
+            Coupling-aware sum score
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.coupling_aware_sum(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def harmony_index(self) -> float:
+        """
+        Calculate harmony index (balance - inverse distance from Anchor Point).
+
+        Returns:
+            Harmony index score (0.0 to 1.0)
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.harmony_index(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def composite_score(self) -> float:
+        """
+        Calculate composite score (overall performance).
+        Weighted combination of growth, effectiveness, robustness, and harmony.
+
+        Returns:
+            Composite score
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.composite_score(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def distance_from_anchor(self) -> float:
+        """
+        Calculate Euclidean distance from Anchor Point (1,1,1,1).
+
+        Returns:
+            Distance from anchor
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.distance_from_anchor(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def distance_from_natural_equilibrium(self) -> float:
+        """
+        Calculate Euclidean distance from Natural Equilibrium (0.618, 0.414, 0.718, 0.693).
+
+        Interpretation:
+        - d < 0.2: Near-optimal balance
+        - 0.2 ≤ d < 0.5: Good but improvable
+        - 0.5 ≤ d < 0.8: Moderate imbalance
+        - d ≥ 0.8: Significant dysfunction
+
+        Returns:
+            Distance from natural equilibrium
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.distance_from_natural_equilibrium(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def full_diagnostic(self) -> Dict:
+        """
+        Get complete diagnostic analysis including all baseline metrics.
+
+        Returns:
+            Dictionary with comprehensive diagnostic information
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.full_diagnostic(
+            self.love, self.justice, self.power, self.wisdom
+        )
+
+    def suggest_improvements(self) -> Dict:
+        """
+        Get improvement suggestions based on distance from Natural Equilibrium.
+
+        Returns:
+            Dictionary with prioritized improvement suggestions
+        """
+        from src.ljpw_baselines import LJPWBaselines
+        return LJPWBaselines.suggest_improvements(
+            self.love, self.justice, self.power, self.wisdom
         )
 
 

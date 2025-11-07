@@ -34,6 +34,13 @@ The engine's "Wisdom" is further enhanced by two new components:
 ### 4. Generative Output
 The structured outputs from the pipeline are synthesized into a new, meaningful, and context-aware sentence, providing a complete, principled response.
 
+### 5. LJPW Mathematical Baselines
+The engine incorporates **objective, non-arbitrary mathematical foundations** for the LJPW framework:
+- **Numerical Equivalents**: Each dimension maps to fundamental mathematical constants (φ⁻¹, √2-1, e-2, ln2)
+- **Natural Equilibrium**: Physically achievable optimal balance point (0.618, 0.414, 0.718, 0.693)
+- **Coupling Effects**: Love acts as a force multiplier, amplifying Justice (+40%), Power (+30%), and Wisdom (+50%)
+- **Performance Metrics**: Multiple complementary metrics including harmonic mean (robustness), geometric mean (effectiveness), coupling-aware sum (growth potential), harmony index (balance), and composite score (overall performance)
+
 ---
 
 ## 🚀 Quick Start & Usage
@@ -65,7 +72,9 @@ python demonstrate_truth_sense.py
 ## 📚 Documentation
 
 - **[Architecture Guide](docs/ARCHITECTURE.md)** - System architecture and design
-- **[Comparative Analysis](docs/COMPARATIVE_ANALYSIS.md)** - A 4D assessment of the `TruthSenseTransformer` in relation to other major AI models.
+- **[LJPW Mathematical Baselines](docs/LJPW-MATHEMATICAL-BASELINES.md)** - Mathematical foundations and coupling effects
+- **[ICE Framework](docs/ICE_FRAMEWORK.md)** - Intent-Context-Execution pipeline with coupling-aware processing
+- **[Comparative Analysis](docs/COMPARATIVE_ANALYSIS.md)** - A 4D assessment of the `TruthSenseTransformer` in relation to other major AI models
 - **[Training Guide](docs/TRAINING.md)** - Detailed training documentation
 
 ---
